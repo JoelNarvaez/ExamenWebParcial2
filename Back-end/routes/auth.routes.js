@@ -1,6 +1,7 @@
 const express = require("express");
 const { login, logout, getProfile } = require("../controllers/auth.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
+const { startCertificacion } = require("../controllers/auth.controller");
 
 const router = express.Router();
 
@@ -14,10 +15,10 @@ router.post("/logout", verifyToken, logout);
 // GET /api/profile - Obtener perfil del usuario autenticado
 //router.get("/profile", verifyToken, getProfile);
 
-router.post("/start", verifyToken, start);
+router.post("/start", verifyToken, startCertificacion);
 
-router.post("/submit", verifyToken, submit);
+// router.post("/submit", verifyToken, submit);
 
-router.post("/pdf", verifyToken, pdf);
+// router.post("/pdf", verifyToken, pdf);
 
 module.exports = router;
