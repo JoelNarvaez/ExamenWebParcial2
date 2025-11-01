@@ -33,7 +33,15 @@
 
     <!-- Secciones de la página de inicio -->
     <main>
-        <section class="hero-image"></section>
+        <section class="hero-image">
+            <div class="hero-container">
+                <div class="hero-text">
+                <h1>Certificación de Programación</h1>
+                <p>And I'm a Photographer</p>
+                <button>Explorar Cursos</button>
+            </div>
+            </div>
+        </section>
 
         <section class="presentacion">
             <h2>Nombre de la página</h2>
@@ -45,10 +53,66 @@
 
             </div>
         </section>
-        <section class="certificaciones">
+ <section class="certificaciones-seccion"> 
+       <!-- div.servicios-container -->
+            <h2 class="certificaciones-titulo">Nuestras Certificaciones</h2>
+            <div class="certificaciones-contenedor">
+                <div class="certificaciones-superior">
+                    <div class="certificacion-card">
+                            <img src="libros.jpg" alt="Libros">
+                            <h3>Certificación en Java</h3>
+                            <p>En Librería Atlantis encontrarás un universo literario para todos los gustos y edades. Ponemos a tu alcance una gran variedad de volúmenes y géneros que van desde lo clásico hasta lo más actual, porque creemos que siempre hay un libro esperando por cada lector. Aquí encontrarás libros de ficción, thrillers y suspenso, distopía, aventuras, fantasía, contemporáneos, terror, infantiles, novelas históricas, novelas románticas, novelas paranormales, poesía, juveniles <br> 
+                            También hallarás libros de autoayuda y superación personal, salud y deporte, libros prácticos o manuales, memorias, biografías, cocina, viajes, libros técnicos y especializados de consulta y referencia, divulgativos, libros de texto, libros de arte, entre otros. <br>
+                            Tenemos un área con libros internacionales en dónde encontrarás libros en inglés y francés.</p>
+                        </div>
 
+                        <div class="certificacion-card">
+                            <img src="cafe_literario.jpg" alt="Café Literario">
+                            <h3>Certificación en C#</h3>
+                            <p> En Librería Atlantis creemos que los libros no solo se leen, también se disfrutan, se comparten y se viven. Por eso, todos los jueves a las 6:00 P.M. te invitamos a nuestro Café Literario, un espacio creado para que lectores, escritores y curiosos se reúnan alrededor de una buena taza de café y una conversación enriquecedora. </p>
+                            <br> <br>En cada encuentro podrás: <br>
+                            <ul>
+                                <li>Descubrir nuevas lecturas y autores. </li>
+                                <li>Compartir tus impresiones sobre libros clásicos y contemporáneos. </li> 
+                                <li>Escuchar lecturas en voz alta y reflexiones literarias. </li> 
+                                <li>Conocer a personas apasionadas por la literatura, igual que tú. </li> 
+                            </ul>
+                            <br><p>¡Te esperamos!</p>
+                        </div>
+                    </div>
+                    <div class="certificaciones-inferior">
+                        <div class="certificacion-card">
+                        <img src="taller_lectura.jpg" alt="Taller de Lectura Infantil">
+                            <h3>Certificación en Python</h3>
+                            <p>Para los más pequeños también tenemos preparado algo muy especial. Porque creemos que la aventura de la lectura debe disfrutarse en cada etapa de la vida, cada sábado a las 10:00 de la mañana realizamos nuestro Taller de Lectura Infantil, un espacio divertido y educativo diseñado especialmente para los más jóvenes.
+                            <br> <br>En este taller, los niños podrán: <br> <br>
+                            <ul>
+                                <li>Escuchar cuentos y relatos narrados en un ambiente acogedor.</li>
+                                <li>Participar en dinámicas creativas que estimulan la imaginación.</li>
+                                <li>Realizar alguna manualidad alusiva al cuento que se lee </li>
+                            </ul>
+                            <p>Nuestro objetivo es despertar la curiosidad y la pasión por la lectura, ayudando a que los niños descubran que los libros son una ventana a mundos infinitos de aventuras y aprendizajes. <br>¡Todos a bordo de este barco lector!</p>
+                        </div>
+                        <div class="certificacion-card">
+                        <img src="taller_lectura.jpg" alt="Taller de Lectura Infantil">
+                            <h3>Certificación en HTML, CSS Y JS</h3>
+                            <p>Para los más pequeños también tenemos preparado algo muy especial. Porque creemos que la aventura de la lectura debe disfrutarse en cada etapa de la vida, cada sábado a las 10:00 de la mañana realizamos nuestro Taller de Lectura Infantil, un espacio divertido y educativo diseñado especialmente para los más jóvenes.
+                            <br> <br>En este taller, los niños podrán: <br> <br>
+                            <ul>
+                                <li>Escuchar cuentos y relatos narrados en un ambiente acogedor.</li>
+                                <li>Participar en dinámicas creativas que estimulan la imaginación.</li>
+                                <li>Realizar alguna manualidad alusiva al cuento que se lee </li>
+                            </ul>
+                            <p>Nuestro objetivo es despertar la curiosidad y la pasión por la lectura, ayudando a que los niños descubran que los libros son una ventana a mundos infinitos de aventuras y aprendizajes. <br>¡Todos a bordo de este barco lector!</p>
+                        </div>
+                    </div>
+        </div>
+    </section>
+        <section class= "preguntas-frecuentes">
+            <h3>Preguntas frecuentes</h3>
+
+            <!-- PENDIENTE ESTA SECCION -->
         </section>
-        <section class= "preguntas-frecuentes"></section>
     </main>
 
       <!-- Modal de Login -->
@@ -57,6 +121,7 @@
             <span class="close" id="closeModal">&times;</span>
             <h2>Iniciar Sesión</h2>
             <form id="formLogin">
+                <input type="text" id="nombreLogin" placeholder="Nombre Completo" required>
                 <input type="text" id="login" placeholder="Usuario" required>
                 <input type="password" id="password" placeholder="Contraseña" required>
                 <button type="submit">Enviar</button>
