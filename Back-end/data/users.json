@@ -1,0 +1,8 @@
+[
+  { "cuenta": "gina",     "contrasena": "1234" },
+  { "cuenta": "Joel Narvaez",    "contrasena": "abcd" },
+  { "cuenta": "karla",    "contrasena": "pass1" },
+  { "cuenta": "luis",     "contrasena": "secreto" },
+  { "cuenta": "andrea",   "contrasena": "qwerty" },
+  { "cuenta": "prof_uaa", "contrasena": "angular17" }
+]
