@@ -1,0 +1,51 @@
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: auto;
+	background: rgba(0,0,0,0.3);
+}
+.modal-content {
+	background: #fff;
+	margin: 7% auto;
+	padding: 2rem 2rem 1.5rem 2rem;
+	border-radius: 8px;
+	width: 100%;
+	max-width: 350px;
+	position: relative;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.close {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-size: 1.5rem;
+	color: #888;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+
+/* Estilo de menú */
+.menu{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.menu-central{
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.menu-izquierda{
+    padding: 2rem;
+}
+
+.menu-derecha{
+    padding: 2rem;
+}
