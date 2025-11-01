@@ -1,5 +1,6 @@
 // Importa el array de usuarios desde el archivo JSON (se carga una sola vez al iniciar)
-const users = require("../modelo/users.json");
+const users = require("../data/users.json");
+const PREGUNTAS = require ("../data/preguntas")
 const { createSession, deleteSession } = require("../middleware/auth.middleware");
 
 // Función controladora para manejar el login
@@ -60,6 +61,21 @@ exports.logout = (req, res) => {
   }
 };
 
+exports.startCertificacion = (req, res) => {
+  const categoria = req.query.categoria;
+  const preguntasCategoria = PREGUNTAS.categoria;
+
+  const preguntas = preguntasCategoria.map(({id, text, options}) => ({
+    id, text, options
+  }));
+
+  res.status(200).json({
+    message: "Inicio de la certificaion",
+    questions: preguntas
+  })
+
+  console.log(`Acceso a la certificacion ${req.userId}  /api/questions/start certificacion: ${categoria}`);
+}
 // Función controladora para obtener el perfil del usuario autenticado
 // exports.getProfile = (req, res) => {
 //   const userId = req.userId; // El userId viene del middleware verifyToken
