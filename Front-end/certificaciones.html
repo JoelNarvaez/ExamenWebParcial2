@@ -38,68 +38,95 @@
     <h2 class="certificaciones-titulo">Nuestras Certificaciones</h2>
     <div class="certificaciones-contenedor">
         <div class="certificaciones-superior">
-            <div class="certificacion-card">
-                    <img src="libros.jpg" alt="Libros">
-                    <h3>Certificación en JavaScript</h3>
-                    <p><strong> Descripción:</strong> Bla bla</p>
-                    <p><strong> Ventajas:</strong>  <ul>
-                        <li>Ejemplo </li>
-                        <li>Ejemplo </li> 
-                        <li>Ejemplo </li> 
-                        <li>Ejemplo </li> 
-                    </ul></p>
-                    <p><strong> Puntuación Mínima:</strong> 6.25 </p>
-                    <p><strong> Duración del Examen:</strong> 10 min </p>
-                    <p><strong> Costo de  Certificación:</strong> $3,500 </p>
-                    <button id="btnPago" class="pagar-btn" title="Pago">
-                        <span class="pagar-Certificaciones">Pagar</span>
-                    </button>
-                    <button id="btn-inicio-examen" class="iniciar-examen-btn" title="Inicio Examen" style="display: none;">
-                        <span class="inicio-examen-certificaciones">Iniciar Examen</span>
-                    </button>
-                </div>
+        <div class="certificacion-card">
+            <img src="imagenes/javascript-logo.jpg" alt="JavaScript">
+            <h3>Certificación en JavaScript</h3>
+            <p><strong> Descripción:</strong> Bla bla</p>
+            <p><strong> Ventajas:</strong><ul class="lista-certificaciones">
+                <li>Ejemplo </li>
+                <li>Ejemplo </li> 
+                <li>Ejemplo </li> 
+                <li>Ejemplo </li> 
+            </ul></p>
+            <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+            <p><strong> Duración del Examen:</strong> 10 min </p>
+            <p><strong> Costo de  Certificación:</strong> $3,500 </p>
+            <button id="btn-pago-js" class="pagar-btn" title="Pago" value="javascript" >
+                <span class="pagar-js">Pagar</span>
+            </button>
+            <button id="btn-examen-js" class="examen-btn" title="Inicio Examen" value="javascript">
+                <span class="examen-js">Iniciar Examen</span>
+            </button>
+        </div>
 
-                <div class="certificacion-card">
-                    <img src="cafe_literario.jpg" alt="Café Literario">
-                    <h3>Certificación en C#</h3>
-                    <p> En Librería Atlantis creemos que los libros no solo se leen, también se disfrutan, se comparten y se viven. Por eso, todos los jueves a las 6:00 P.M. te invitamos a nuestro Café Literario, un espacio creado para que lectores, escritores y curiosos se reúnan alrededor de una buena taza de café y una conversación enriquecedora. </p>
-                    <br> <br>En cada encuentro podrás: <br>
-                    <ul>
-                        <li>Descubrir nuevas lecturas y autores. </li>
-                        <li>Compartir tus impresiones sobre libros clásicos y contemporáneos. </li> 
-                        <li>Escuchar lecturas en voz alta y reflexiones literarias. </li> 
-                        <li>Conocer a personas apasionadas por la literatura, igual que tú. </li> 
-                    </ul>
-                    <br><p>¡Te esperamos!</p>
-                </div>
+        <div class="certificacion-card">
+            <img src="libros.jpg" alt="C#">
+            <h3>Certificación en C#</h3>
+            <p><strong> Descripción:</strong> Bla bla</p>
+            <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
+                <li>Ejemplo </li>
+                <li>Ejemplo </li> 
+                <li>Ejemplo </li> 
+                <li>Ejemplo </li> 
+            </ul></p>
+            <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+            <p><strong> Duración del Examen:</strong> 10 min </p>
+            <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+            <button id="btn-pago-c" class="pagar-btn-otro" title="Pago" value="c#" disabled>
+                <span class="pagar-otro">Pagar</span>
+            </button>
+            <button id="btn-examen-c" class="examen-btn-otro" title="Inicio Examen" value="c#" disabled>
+                <span class="examen-otro">Iniciar Examen</span>
+            </button>
+            <p><strong> Esta certificación estará disponible a partir del 01 de dicimebre de 2025</strong></p>
+        </div>
+    </div>
+        <div class="certificaciones-inferior">
+            <div class="certificacion-card">
+            <img src="taller_lectura.jpg" alt="Python">
+                <h3>Certificación en Python</h3>
+                <p><strong> Descripción:</strong> Bla bla</p>
+                <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
+                    <li>Ejemplo </li>
+                    <li>Ejemplo </li> 
+                    <li>Ejemplo </li> 
+                    <li>Ejemplo </li> 
+                </ul></p>
+                <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+                <p><strong> Duración del Examen:</strong> 10 min </p>
+                <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+                <button id="btn-pago-otro" class="pagar-btn-otro" title="Pago" value="c#" disabled>
+                    <span class="pagar-otro">Pagar</span>
+                </button>
+                <button id="btn-inicio-examen-py" class="examen-btn-otro" title="Inicio Examen" value="c#" disabled>
+                    <span class="examen-otro">Iniciar Examen</span>
+                </button>
+                <p><strong> Esta certificación estará disponible a partir del 01 de dicimebre de 2025</strong></p>
             </div>
-            <div class="certificaciones-inferior">
-                <div class="certificacion-card">
-                <img src="taller_lectura.jpg" alt="Taller de Lectura Infantil">
-                    <h3>Certificación en Python</h3>
-                    <p>Para los más pequeños también tenemos preparado algo muy especial. Porque creemos que la aventura de la lectura debe disfrutarse en cada etapa de la vida, cada sábado a las 10:00 de la mañana realizamos nuestro Taller de Lectura Infantil, un espacio divertido y educativo diseñado especialmente para los más jóvenes.
-                    <br> <br>En este taller, los niños podrán: <br> <br>
-                    <ul>
-                        <li>Escuchar cuentos y relatos narrados en un ambiente acogedor.</li>
-                        <li>Participar en dinámicas creativas que estimulan la imaginación.</li>
-                        <li>Realizar alguna manualidad alusiva al cuento que se lee </li>
-                    </ul>
-                    <p>Nuestro objetivo es despertar la curiosidad y la pasión por la lectura, ayudando a que los niños descubran que los libros son una ventana a mundos infinitos de aventuras y aprendizajes. <br>¡Todos a bordo de este barco lector!</p>
-                </div>
-                <div class="certificacion-card">
-                <img src="taller_lectura.jpg" alt="Taller de Lectura Infantil">
-                    <h3>Certificación en Java</h3>
-                    <p>Para los más pequeños también tenemos preparado algo muy especial. Porque creemos que la aventura de la lectura debe disfrutarse en cada etapa de la vida, cada sábado a las 10:00 de la mañana realizamos nuestro Taller de Lectura Infantil, un espacio divertido y educativo diseñado especialmente para los más jóvenes.
-                    <br> <br>En este taller, los niños podrán: <br> <br>
-                    <ul>
-                        <li>Escuchar cuentos y relatos narrados en un ambiente acogedor.</li>
-                        <li>Participar en dinámicas creativas que estimulan la imaginación.</li>
-                        <li>Realizar alguna manualidad alusiva al cuento que se lee </li>
-                    </ul>
-                    <p>Nuestro objetivo es despertar la curiosidad y la pasión por la lectura, ayudando a que los niños descubran que los libros son una ventana a mundos infinitos de aventuras y aprendizajes. <br>¡Todos a bordo de este barco lector!</p>
-                </div>
+            <div class="certificacion-card">
+            <img src="taller_lectura.jpg" alt="Java">
+                <h3>Certificación en Java</h3>
+                <p><strong> Descripción:</strong> Bla bla</p>
+                <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
+                    <li>Ejemplo </li>
+                    <li>Ejemplo </li> 
+                    <li>Ejemplo </li> 
+                    <li>Ejemplo </li> 
+                </ul></p>
+                <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+                <p><strong> Duración del Examen:</strong> 10 min </p>
+                <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+                <button id="btn-pago-otro" class="pagar-btn-otro" title="Pago" value="c#" disabled>
+                    <span class="pagar-otro">Pagar</span>
+                </button>
+                <button id="btn-inicio-examen-otro" class="examen-btn-otro" title="Inicio Examen" value="c#" disabled>
+                    <span class="-examen-otro">Iniciar Examen</span>
+                </button>
+                <p><strong> Esta certificación estará disponible a partir del 01 de dicimebre de 2025</strong></p>
             </div>
-</div>
+        </div>
+    </div>
+    
     </section>
 
     </main>
