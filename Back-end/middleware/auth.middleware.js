@@ -1,6 +1,41 @@
 // Almacenamiento en memoria de las sesiones activas
 // Estructura: { token: userId }
 const sessions = new Map();
+const usuarios = new Map();
+
+
+exports.verificarEstado = (req, res, next) => {
+  const nombre = req.userId;
+  const categoria = req.categoria;
+  const user = obtenerUsuario(nombre);
+  const cert = user.certificaciones[categoria];
+
+  if (!cert) {
+    return res.status(400).json({
+      message: "Certificacion no valida."
+    });
+  }
+
+  if (cert.pago && cert.examenHecho) {
+    return res.status(400).json({
+      message: `Ya hizo el examen una vez. No es posible hacerlo una vez mas.`,
+      estado: "completo",
+      pago: true,
+      examenHecho: true
+    });
+  }
+
+  if (!cert.pagado) {
+    return res.status(200).json({
+      message: `Acceso denegado: Aun no ha pagado el certificado.`,
+      estado: "examenSinPago",
+      pago: false,
+      examenHecho: true
+    });
+  }
+
+  next();
+};
 
 /**
  * Middleware para verificar el token de sesión
@@ -33,6 +68,7 @@ exports.verifyToken = (req, res, next) => {
   // Agregar la información del usuario al request para uso posterior
   req.userId = userId;
   req.token = token;
+  req.categoria = req.query.categoria;
 
   // Continuar con la siguiente función
   next();
