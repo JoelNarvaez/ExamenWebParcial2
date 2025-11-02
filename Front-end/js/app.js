@@ -131,3 +131,36 @@ async function logout() {
     updateUILoggedOut();
   }
 }
+
+// --- Manejo del modal de pago ---
+document.addEventListener('DOMContentLoaded', function() {
+  const btnPagoJS = document.getElementById('btn-pago-js');
+  const pagoModal = document.getElementById('pagoModal');
+  const closePagoModal = document.getElementById('closePagoModal');
+  const formPago = document.getElementById('formPago');
+
+  // Abrir el modal de pago al hacer clic en "Pagar"
+  btnPagoJS.onclick = () => {
+    pagoModal.style.display = 'block';
+  };
+
+  // Cerrar modal con la X
+  closePagoModal.onclick = () => {
+    pagoModal.style.display = 'none';
+  };
+
+  // Cerrar modal si se hace clic fuera del contenido
+  window.onclick = (e) => {
+    if (e.target === pagoModal) {
+      pagoModal.style.display = 'none';
+    }
+  };
+
+  // Enviar formulario de pago
+  formPago.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Pago procesado correctamente. ¡Gracias por tu compra!");
+    pagoModal.style.display = 'none';
+    formPago.reset();
+  });
+});

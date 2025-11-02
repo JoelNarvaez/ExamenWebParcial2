@@ -131,6 +131,40 @@
 
     </main>
 
+    <!-- Modal de Pago -->
+    <div id="pagoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closePagoModal">&times;</span>
+        <h2>Formulario de Pago</h2>
+        <form id="formPago" class="form-pago-grid">
+        <div class="form-pago">
+            <label for="nombre">Nombre en la tarjeta:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-pago">
+            <label for="tarjeta">Número de tarjeta:</label>
+            <input type="number" id="tarjeta" name="tarjeta" maxlength="16" required>
+        </div>
+
+        <div class="form-pago">
+            <label for="fecha">Fecha de expiración:</label>
+            <input type="month" id="fecha" name="fecha" required>
+        </div>
+
+        <div class="form-pago">
+            <label for="cvv">CVV:</label>
+            <input type="number" id="cvv" name="cvv" maxlength="3" required>
+        </div>
+
+        <div class="form-pago form-completo">
+            <button type="submit" class="btn-confirmar">Confirmar Pago</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+
       <!-- Modal de Login -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
