@@ -58,10 +58,12 @@ form.addEventListener("submit", async (e) => {
     // Revisar la respuesta
     if (res.ok) {
       const cuenta = data.usuario?.cuenta;
+      const nombreCompleto = data.usuario?.nombreCompleto;
       const token = data.token;
       
       localStorage.setItem('token', token);
       localStorage.setItem('userName', cuenta);
+      localStorage.setItem('nombreCompleto', nombreCompleto);
       
       Swal.fire({
           title: "Acceso permitido",

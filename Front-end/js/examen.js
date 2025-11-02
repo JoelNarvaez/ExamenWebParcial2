@@ -9,6 +9,7 @@ const fecha = new Date().toLocaleDateString();
 
 // Mostrar nombre categoria
 document.getElementById("nombreCategoria").textContent = localStorage.getItem("categoria");
+document.getElementById("nombreUsuario").textContent += localStorage.getItem("nombreCompleto");
 document.getElementById("cuentaUsuario").textContent += localStorage.getItem("userName");
 document.getElementById("fechaAplicacion").textContent += fecha;
 
