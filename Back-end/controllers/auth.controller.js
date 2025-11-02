@@ -2,7 +2,8 @@
 const users = require("../data/users.json");
 const PREGUNTAS = require ("../data/preguntas")
 const { createSession, deleteSession, obtenerUsuario} = require("../middleware/auth.middleware");
-
+const examCache = new Map(); // userId -> [ids]
+exports.examCache = examCache;
 
 // Función controladora para manejar el login
 exports.login = (req, res) => {
@@ -63,7 +64,7 @@ exports.logout = (req, res) => {
 };
 
 exports.startCertificacion = (req, res) => {
-  const categoria = req.query.categoria;
+  const categoria = req.categoria;
 
   // Validar que exista la categoría
   if (!categoria || !PREGUNTAS[categoria]) {
@@ -72,18 +73,20 @@ exports.startCertificacion = (req, res) => {
     });
   }
 
-  // Obtener las preguntas de la categoría
+  // Obtener las preguntas de la categoria
   const preguntasCategoria = PREGUNTAS[categoria];
 
-  // Mezclar aleatoriamente las preguntas y tomar solo 8
+  // Mezclar
   const preguntasAleatorias = preguntasCategoria
-    .sort(() => Math.random() - 0.5) // mezcla aleatoria
-    .slice(0, 8); // tomar las primeras 8
+    .sort(() => Math.random() - 0.5) 
+    .slice(0, 8); // nomas 8
 
-  // Formatear las preguntas (sin incluir la respuesta correcta)
+  // Formato
   const preguntas = preguntasAleatorias.map(({ id, text, options }) => ({
     id, text, options
   }));
+
+  examCache.set(req.userId, preguntas.map(p => p.id));
 
   // Enviar respuesta
   res.status(200).json({
@@ -91,22 +94,29 @@ exports.startCertificacion = (req, res) => {
     questions: preguntas
   });
 
-  // Log en consola para auditoría
+  // A ver si jala
   console.log(
     `Acceso a la certificación ${req.userId} /api/questions/start certificacion: ${categoria}`
   );
+  console.log(preguntas)
 };
 
 
-exports.submitAnswers = (req, res) => {
+exports.submit = (req, res) => {
   const { categoria, answers } = req.body;
 
   if (!categoria || !PREGUNTAS[categoria]) {
     return res.status(400).json({ message: "Categoría inválida" });
   }
 
+  const askedIds = examCache.get(req.userId);
+  if (!askedIds) {
+    return res.status(400).json({ message: "No se inició el examen o expiró." });
+  }
+
   const userAnswers = Array.isArray(answers) ? answers : [];
-  const questions = PREGUNTAS[categoria];
+
+  const questions = PREGUNTAS[categoria].filter(q => askedIds.includes(q.id));
 
   let score = 0;
   const details = [];
@@ -126,6 +136,8 @@ exports.submitAnswers = (req, res) => {
     });
   }
 
+  examCache.delete(req.userId); // limpiar la sesión del examen
+
   const user = obtenerUsuario(req.userId);
   user.certificaciones[categoria].examenRealizado = true;
 
@@ -138,13 +150,11 @@ exports.submitAnswers = (req, res) => {
   });
 };
 
-
 exports.payment = (req, res) => {
   const nombre = req.userId;
   const categoria  = req.categoria;
   const user = obtenerUsuario(nombre);
   console.log(categoria);
-  console.log(user);
 
   if (!user || !user.certificaciones[categoria]) {
     return res.status(400).json({ message: "Categoría inválida" });
@@ -161,6 +171,22 @@ exports.payment = (req, res) => {
     user
   });
 }
+
+exports.checarExamen = (req, res) => {
+  const { categoria } = req.body;
+  const user = obtenerUsuario(req.userId);
+
+  const cert = user.certificaciones[categoria];
+
+  if (!cert) return res.status(400).json({ ok: false, message: "Categoría inválida" });
+  if (!cert.pagado) return res.status(403).json({ ok: false, message: "Primero paga" });
+  if (cert.examenRealizado) return res.status(403).json({ ok: false, message: "Ya hiciste este examen" });
+
+  return res.status(200).json({ ok: true });
+}
+
+
+
 
 // exports.registrarExamen = (req, res) => {
 //   const nombre = req.userId;

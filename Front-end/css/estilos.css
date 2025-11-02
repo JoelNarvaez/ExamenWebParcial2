@@ -323,3 +323,42 @@ gap: 15px;                     /* Espacio entre los enlaces */
     font-size: 1rem;
 }
 
+
+/* --- Modal de pago  --- */
+.form-pago-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 2rem; 
+}
+
+.form-pago label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-pago input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-completo {
+  grid-column: 1 / 3; /* el botón abarca las 2 columnas */
+}
+
+.btn-confirmar {
+  width: 100%;
+  background-color: #3aa3a0;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-confirmar:hover {
+  background-color: #3aa3a0;
+}

@@ -30,7 +30,7 @@ exports.verifyToken = (req, res, next) => {
   // Agregar la información del usuario al request para uso posterior
   req.userId = userId;
   req.token = token;
-  req.categoria = req.body.categoria;
+  req.categoria = req.body?.categoria ?? null;
 
   // Continuar con la siguiente función
   next();
@@ -68,33 +68,6 @@ exports.obtenerUsuario = (nombre) => {
   return usuarios.get(nombre);
 };
 
-exports.verificarEstado = (req, res, next) => {
-  const nombre = req.userId;
-  const categoria = req.categoria;
-  const user = obtenerUsuario(nombre);
-
-  console.log("Llego aqui");
-
-  const cert = user.certificaciones[categoria];
-
-  if (!cert) {
-    return res.status(400).json({ message: "Certificación no válida." });
-  }
-
-  if (cert.pagado && cert.examenRealizado) {
-    return res.status(400).json({
-      message: "Ya hiciste el examen una vez."
-    });
-  }
-
-  if (!cert.pagado) {
-    return res.status(403).json({
-      message: "Debes pagar antes de iniciar el examen."
-    });
-  }
-
-  next();
-};
 
 /**
  * Función para eliminar una sesión (logout)
