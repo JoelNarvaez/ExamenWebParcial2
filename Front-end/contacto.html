@@ -34,51 +34,47 @@
     <!-- Formulario de contacto -->
     <main>
         <section class="contacto-section">
-        <div class="contacto-container">
-            <div class="contacto-content">
-                <h2>Contacto</h2>
-                <p>Esperamos oír pronto de ti <br> <br> </p>
-                <h3>Teléfono</h3>
-                <p>+52-1-33-12345678 <br> <br> </p>
-                <h3>Email</h3>
-                <p>info@misitio.com<br> <br> </p>
+            <h3>Contacto</h3>
+            <p> ¿Tienes duda sobre nuestros procesos de certificación o deseas dejar algún comentario? No dudes en hacerlo en el formulario que te dejamos abajo. ¡Queremos escucharte!</p>
+            <div class="contacto-container">
+                <div class="contacto-content">
+                    <p>También puedes contactarnos por los siguientes medios: <br> <br> </p>
+                    <h3>Teléfono</h3>
+                    <p>449-345-67-83 <br> <br> </p>
+                    <h3>Email</h3>
+                    <p>info@misitio.com<br> <br> </p>
+                </div>
+                <form id="contacto-formulario" class="contacto-form">
+                    <div class="form-row1">
+                        <div>
+                            <label for="nombre">Nombre</label><br>
+                            <input type="text" id="nombre"  name="" required><br>
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido</label><br>
+                            <input type="text" id="apellido" name="" required> 
+                        </div>
+                        
+                    </div>
+                    <div class="form-row2">
+                        <div>                    
+                            <label for="email">Email</label><br>
+                            <input type="text" id="email"  name=""  required ><br> 
+                        </div>
+
+                    </div>
+                    <div class="form-row3">
+                        <div>
+                            <label for="mensaje">Preguntas o dudas:</label><br>
+                            <textarea id="mensaje" rows="5" cols="42" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row4">
+                            <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            
             </div>
-            <form class="contacto-form">
-                <div class="form-row1">
-                    <div>
-                        <label for="nombre">Nombre</label><br>
-                        <input type="text" id="nombre" name="" required><br>
-                    </div>
-                    <div>
-                        <label for="apellido">Apellido</label><br>
-                        <input type="text" id="apellido" name="" required> 
-                    </div>
-                    
-                </div>
-                <div class="form-row2">
-                    <div>                    
-                        <label for="email">Email</label><br>
-                        <input type="text" id="email" name="" required><br> 
-                    </div>
-
-                    <div> 
-                        <label for="asunto">Asunto</label><br>
-                        <input type="text" id="asunto" name="" required>
-                    </div>
-
-                </div>
-                <div class="form-row3">
-                    <div>
-                        <label for="mensaje">Mensaje</label><br>
-                        <textarea id="mensaje" rows="5" cols="30" required></textarea>
-                    </div>
-                    <div>
-                        <button type="submit" onclick="alert('Información enviada')">Enviar</button>
-                    </div>
-                </div>
-            </form>
-          
-        </div>
     </section>
 
     </main>
@@ -123,6 +119,6 @@
     </footer>
 
 
-    <script src="js/app.js"></script>
+    <script src="js/contacto.js"></script>
 </body>
 </html>

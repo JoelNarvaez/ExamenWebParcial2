@@ -2,11 +2,13 @@ const express = require("express");
 const { login, logout, getProfile} = require("../controllers/auth.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
 const { startCertificacion, payment, checarExamen, submit} = require("../controllers/auth.controller");
+const { contacto } = require("../controllers/auth.controller");
 
 const router = express.Router();
 
 // Ruta pública: POST /api/login
 router.post("/login", login);
+router.post("/contacto", contacto);
 
 // Rutas protegidas (requieren token)
 // POST /api/logout - Cerrar sesión

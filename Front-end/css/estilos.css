@@ -259,51 +259,65 @@ gap: 15px;                     /* Espacio entre los enlaces */
 /* Formulario de contacto */
 .contacto-container {
    display:flex;
-   gap:50px;
+   gap:2rem;
 }
 
 .contacto-content{
     flex:1;
     justify-content: center;   
     align-items: center;  
-    padding-top: 200px;
-    padding-left: 400px;
+    padding-top: 10rem;
+    padding-left: 20rem;
 }
 
 .contacto-form{
-    flex:1;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
-    padding-right: 500px;
-
+    padding-top: 5rem;
+    padding-right: 31rem;
 }
 
-.form-row1, .form-row2{
+.form-row1{
     display: flex;
     flex:1; 
-    gap: 20px;
-    padding:60px;
+    gap: 1.25rem;
+    padding:3.75rem;
     padding-bottom: 5px;
 }
 
+.form-row2{
+    padding-left:3.75rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    width:100px;
+}
+#email {
+  width: 26rem;   
+  font-family: Courier;
+  font-size: 1rem;
+}
+.form-row2 input, .form-row1 input{
+  padding: 0.4rem;
+}
 .form-row3{
     display: flex;
     gap:20px;
-    padding:60px;
+    padding-left:3.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
 }
 .form-row3 textarea{
     flex: 2;
     font-family: Courier;
     font-size: 1rem;
-    padding: 5px;
+    padding: 0.6rem;
+
 }
-.form-row3 button{
+.form-row4 button{
     flex:1;
-    padding: 50px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 8px;
     color: white;
     background-color: rgb(22, 179, 194);
     border-color: rgb(5, 138, 145);
@@ -311,6 +325,11 @@ gap: 15px;                     /* Espacio entre los enlaces */
     font-family: Courier;
     font-size: 1rem;
     border-style: dotted;
+}
+.form-row4{
+    padding-left:12rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 .form-row1 input{
