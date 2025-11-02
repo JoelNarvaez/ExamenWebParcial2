@@ -3,44 +3,6 @@
 const sessions = new Map();
 const usuarios = new Map();
 
-
-exports.verificarEstado = (req, res, next) => {
-  const nombre = req.userId;
-  const categoria = req.categoria;
-  const user = obtenerUsuario(nombre);
-  const cert = user.certificaciones[categoria];
-
-  if (!cert) {
-    return res.status(400).json({
-      message: "Certificacion no valida."
-    });
-  }
-
-  if (cert.pago && cert.examenHecho) {
-    return res.status(400).json({
-      message: `Ya hizo el examen una vez. No es posible hacerlo una vez mas.`,
-      estado: "completo",
-      pago: true,
-      examenHecho: true
-    });
-  }
-
-  if (!cert.pagado) {
-    return res.status(200).json({
-      message: `Acceso denegado: Aun no ha pagado el certificado.`,
-      estado: "examenSinPago",
-      pago: false,
-      examenHecho: true
-    });
-  }
-
-  next();
-};
-
-/**
- * Middleware para verificar el token de sesión
- * Espera el token en el header: Authorization: Bearer <token>
- */
 exports.verifyToken = (req, res, next) => {
   // Obtener el header Authorization
   const authHeader = req.headers.authorization;
@@ -68,11 +30,12 @@ exports.verifyToken = (req, res, next) => {
   // Agregar la información del usuario al request para uso posterior
   req.userId = userId;
   req.token = token;
-  req.categoria = req.query.categoria;
+  req.categoria = req.body.categoria;
 
   // Continuar con la siguiente función
   next();
 };
+
 
 /**
  * Función para crear una nueva sesión
@@ -88,6 +51,49 @@ exports.createSession = (userId) => {
     : crypto.randomBytes(32).toString('hex');
   sessions.set(token, userId);
   return token;
+};
+
+exports.obtenerUsuario = (nombre) => {
+  if (!usuarios.has(nombre)) {
+    usuarios.set(nombre, {
+      nombre,
+      certificaciones: {
+        javascript: { pagado: false, examenRealizado: false },
+        cpp: { pagado: false, examenRealizado: false },
+        node: { pagado: false, examenRealizado: false },
+        redes: { pagado: false, examenRealizado: false }
+      }
+    });
+  }
+  return usuarios.get(nombre);
+};
+
+exports.verificarEstado = (req, res, next) => {
+  const nombre = req.userId;
+  const categoria = req.categoria;
+  const user = obtenerUsuario(nombre);
+
+  console.log("Llego aqui");
+
+  const cert = user.certificaciones[categoria];
+
+  if (!cert) {
+    return res.status(400).json({ message: "Certificación no válida." });
+  }
+
+  if (cert.pagado && cert.examenRealizado) {
+    return res.status(400).json({
+      message: "Ya hiciste el examen una vez."
+    });
+  }
+
+  if (!cert.pagado) {
+    return res.status(403).json({
+      message: "Debes pagar antes de iniciar el examen."
+    });
+  }
+
+  next();
 };
 
 /**

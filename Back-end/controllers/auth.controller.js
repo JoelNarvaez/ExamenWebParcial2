@@ -99,50 +99,38 @@ exports.startCertificacion = (req, res) => {
 
 
 exports.submitAnswers = (req, res) => {
-  const { categoriaa, answers } = req.body;
+  const { categoria, answers } = req.body;
 
-  // Verifica que el cliente haya enviado una categoría válida y que exista dentro de PREGUNTAS.
-  // Si no se envía o no existe, responde con un error 400 y muestra las categorías disponibles.
-  if (!category || !PREGUNTAS[categoria]) {
-    return res.status(400).json({
-      message: "Categoría inválida o no especificada.",
-    });
+  if (!categoria || !PREGUNTAS[categoria]) {
+    return res.status(400).json({ message: "Categoría inválida" });
   }
 
-  // Convierte las respuestas a un arreglo (por si vienen vacías o mal formadas)
   const userAnswers = Array.isArray(answers) ? answers : [];
   const questions = PREGUNTAS[categoria];
 
   let score = 0;
   const details = [];
 
-  // Se recorren todas las preguntas de la categoría.
-  // Para cada una, se busca la respuesta del usuario (por id) y se compara con la correcta.
   for (const q of questions) {
     const user = userAnswers.find(a => a.id === q.id);
-    const isCorrect = !!user && user.answer === q.correct;
+    const isCorrect = user?.answer === q.correct;
 
-    // Si la respuesta es correcta, se incrementa el puntaje
     if (isCorrect) score++;
 
-    // Se almacena un objeto con los detalles de la pregunta,
-    // incluyendo la respuesta del usuario, la correcta y si acertó o no.
     details.push({
       id: q.id,
       text: q.text,
-      yourAnswer: user ? user.answer : null,
+      yourAnswer: user?.answer ?? null,
       correctAnswer: q.correct,
       correct: isCorrect
     });
   }
 
-  // Se devuelve un JSON con los resultados:
-  // - la categoría del quiz,
-  // - el puntaje obtenido,
-  // - el total de preguntas,
-  // - y los detalles de cada respuesta.
+  const user = obtenerUsuario(req.userId);
+  user.certificaciones[categoria].examenRealizado = true;
+
   res.status(200).json({
-    message: "Respuestas evaluadas.",
+    message: "Respuestas evaluadas",
     categoria,
     score,
     total: questions.length,
@@ -150,16 +138,22 @@ exports.submitAnswers = (req, res) => {
   });
 };
 
-exports.payment = (req, res) => {
-    const nombre = req.userId;
-    const categoria = req.categoria;
-    const user = obtenerUsuario(nombre);
 
-  if (!user.certificaciones[categoria]) {
+exports.payment = (req, res) => {
+  const nombre = req.userId;
+  const categoria  = req.categoria;
+  const user = obtenerUsuario(nombre);
+  console.log(categoria);
+  console.log(user);
+
+  if (!user || !user.certificaciones[categoria]) {
     return res.status(400).json({ message: "Categoría inválida" });
   }
 
-  // Marcar como pagado
+  if (user.certificaciones[categoria].pagado){
+     return res.status(400).json({ message: "No puedes pagar 2 veces el certificado" });
+  }
+
   user.certificaciones[categoria].pagado = true;
 
   res.status(200).json({
