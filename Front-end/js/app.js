@@ -131,3 +131,37 @@ async function logout() {
     updateUILoggedOut();
   }
 }
+
+const btnPagoJs = document.getElementById("btn-pago-js");
+
+btnPagoJs.addEventListener("click", async () => {
+  const token = localStorage.getItem("token");
+  const categoria = document.getElementById("btn-pago-js").value; // luego lo tomas dinámicamente
+
+  try {
+    const res = await fetch("http://localhost:3000/api/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ categoria })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return alert(data.message);
+    }
+
+    alert(`Pago registrado correctamente
+      ${data.message}`);
+   
+    // Aquí puedes actualizar la UI (ej. marcar pago en pantalla)
+    // updateUIPaymentSuccess(categoria);
+
+  } catch (err) {
+    console.error("Error de conexión:", err);
+    alert("Error de conexión con el servidor");
+  }
+});
