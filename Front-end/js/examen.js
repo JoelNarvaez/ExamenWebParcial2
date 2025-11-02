@@ -4,9 +4,13 @@ const quizForm = document.getElementById("quizForm");
 const listaPreguntas = document.getElementById("listaPreguntas");
 const resultado = document.getElementById("resultado");
 let preguntas = [];
+const fecha = new Date().toLocaleDateString();
+
 
 // Mostrar nombre categoria
 document.getElementById("nombreCategoria").textContent = localStorage.getItem("categoria");
+document.getElementById("cuentaUsuario").textContent += localStorage.getItem("userName");
+document.getElementById("fechaAplicacion").textContent += fecha;
 
 // Funcion para mezclar opciones
 function mezclar(arr) {
@@ -48,7 +52,7 @@ btnCargar.addEventListener("click", async () => {
   listaPreguntas.innerHTML = "";
   preguntas.forEach((q) => {
     const opciones = mezclar([...q.options]); 
-
+    btnCargar.remove();
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `

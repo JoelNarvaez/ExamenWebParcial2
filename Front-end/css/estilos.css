@@ -1,3 +1,16 @@
+html, body {
+  height: 100%;              
+}
+
+main {
+  flex: 1;                 
+}
+
+
+.menu a{
+  text-decoration: none;  
+}
+
 .modal {
 	display: none;
 	position: fixed;
@@ -165,6 +178,10 @@ footer {
     background-color:  #3aa3a0; /* Fondo verde */
     color:white;               /* Texto blanco */
     padding: 40px 0 20px 0;      /* Espaciado vertical arriba y abajo */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
 }
 
 .footer-contenedor {
@@ -185,7 +202,7 @@ footer {
     font-weight: 300;          /* Peso de fuente ligero */
 }
 .footer-info p {
-    color: O#cccccc;        /* Color gris claro */
+    color: white;        /* Color gris claro */
     margin-bottom: 5px;       /* Espacio debajo de cada párrafo */
     font-size: 0.9rem;        /* Tamaño de fuente más pequeño */
 }

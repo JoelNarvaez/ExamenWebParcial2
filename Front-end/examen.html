@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <title>Examen</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://kit.fontawesome.com/0209f1a64b.js" crossorigin="anonymous"></script>
   <style>
     main {
       max-width: 700px;
@@ -24,11 +26,34 @@
 </head>
 <body>
 
-<header>
-  <h1>Examen de <span id="nombreCategoria"></span></h1>
-</header>
+    <header>
+        <nav class="menu">
+            <div class="menu-izquierda">
+                <a href="index.html" class="logo">LOGO</a>
+            </div>
+             <div class="menu-central">
+                <a href="index.html" class="inicio">Inicio</a>
+                <a href="certificaciones.html" class="certificaciones">Certificaciones</a>
+                <a href="contacto.html" class="contacto">Contacto</a>
+                <a href="nosotros.html" class="nosotros">Nosotros</a>
+            </div>
+            <div class="menu-izquierda">
+                <span id="userName" class="user-name"></span>
+                <button id="loginBtn" class="login-btn" title="Login">
+                    <span class="login-Menu">Iniciar Sesión</span>
+                </button>
+                <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
+                    <span class="logout-Menu">Cerrar Sesión</span>
+                </button>
+            </div>
+        </nav>
+    </header>
 
 <main>
+  <h1>Examen de <span id="nombreCategoria"></span></h1>
+  <p id="nombreUsuario">Nombre completo: </p>
+  <p id="cuentaUsuario">Nombre de la cuenta: </p>
+  <p id="fechaAplicacion">Fecha de Aplicación: </p>
   <button id="btnCargar">Iniciar Examen (POST)</button>
 
   <form id="quizForm" style="display:none; margin-top: 20px;">
@@ -38,8 +63,34 @@
 
   <div id="resultado" style="margin-top: 20px;"></div>
 </main>
+<footer class="footer">
+        <div class="footer-contenedor">
+            <div class="footer-contenido">
+                <div class="footer-info">
+                <h3>Certificaciones</h3>
+                <p>Texto de ejemplo footer</p>
+                <p>Texto de ejemplo footer</p>
+                </div>
+                <div class="footer-redes">
+                    <h4>Síguenos en redes sociales</h4>
+                    <div class="redes-sociales">    
+                        <a href="#" class="red-social">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="red-social">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025. Todos los derechos reservadosb.</p>
+            </div>
+        </div>
+  </footer>
 
 <script src="js/examen.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>
