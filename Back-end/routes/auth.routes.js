@@ -1,7 +1,7 @@
 const express = require("express");
 const { login, logout, getProfile} = require("../controllers/auth.controller");
 const { verifyToken } = require("../middleware/auth.middleware");
-const { startCertificacion, payment, checarExamen, submit} = require("../controllers/auth.controller");
+const { startCertificacion, payment, checarExamen, submit, generarCertificado} = require("../controllers/auth.controller");
 const { contacto } = require("../controllers/auth.controller");
 
 const router = express.Router();
@@ -22,6 +22,6 @@ router.post("/start", verifyToken, startCertificacion);
 
 router.post("/submit", verifyToken, submit);
 
-// router.post("/pdf", verifyToken, pdf);
+// router.post("/pdf", verifyToken, generarCertificado);
 
 module.exports = router;
