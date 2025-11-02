@@ -63,21 +63,35 @@ form.addEventListener("submit", async (e) => {
       localStorage.setItem('token', token);
       localStorage.setItem('userName', cuenta);
       
-      alert("Acceso permitido: " + cuenta);
+      Swal.fire({
+          title: "Acceso permitido",
+          text: "Bienvenido(a) " + cuenta,
+          icon: "success"
+      });
+
       updateUILoggedIn(cuenta);
       
       document.getElementById('loginModal').style.display = 'none';
       document.getElementById("login").value = "";
       document.getElementById("password").value = "";
     } else {
-      alert(data?.error ?? `Error ${res.status}`);
+      Swal.fire({
+        icon: "error",
+        title: "Oh no...",
+        text: data?.error ?? `Error ${res.status}`
+      });
       document.getElementById("login").value = "";
       document.getElementById("password").value = "";
     }
 
   } catch (err) {
     console.error("Error al conectar con el servidor:", err);
-    alert("Error de conexión con el servidor");
+    Swal.fire({
+      icon: "error",
+      title: "Oh no...",
+      text: "Error de conexión con el servidor"
+    });
+    //alert("Error de conexión con el servidor");
   }
 });
 
@@ -125,14 +139,29 @@ async function logout() {
     });
     
     if (res.ok) {
-      alert('Sesión cerrada correctamente');
+      //alert('Sesión cerrada correctamente');
+      Swal.fire({
+        title: "Sesión cerrada",
+        text: "Sesión cerrada correctamente",
+        icon: "success"
+      });
     } else {
       const data = await res.json();
-      alert(data?.error ?? `Error al cerrar sesión`);
+      //alert(data?.error ?? `Error al cerrar sesión`);
+      Swal.fire({
+        icon: "error",
+        title: "Oh no...",
+        text: data?.error ?? `Error al cerrar sesión`
+      });
     }
   } catch (err) {
     console.error("Error al conectar con el servidor:", err);
-    alert("Error de conexión");
+    //alert("Error de conexión");
+    Swal.fire({
+        icon: "error",
+        title: "Oh no...",
+        text: "Error de conexión"
+      });
   } finally {
     // Siempre limpiar localStorage y actualizar UI, incluso si hay error
     localStorage.removeItem('token');
