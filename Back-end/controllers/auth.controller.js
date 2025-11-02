@@ -1,7 +1,9 @@
 // Importa el array de usuarios desde el archivo JSON (se carga una sola vez al iniciar)
 const users = require("../data/users.json");
+const PDFDocument = require("pdfkit");
+const path = require("path");
 const PREGUNTAS = require ("../data/preguntas")
-const { createSession, deleteSession, obtenerUsuario} = require("../middleware/auth.middleware");
+const { createSession, deleteSession, obtenerUsuario, getOrCreateCert} = require("../middleware/auth.middleware");
 const examCache = new Map(); // userId -> [ids]
 exports.examCache = examCache;
 
@@ -66,7 +68,7 @@ exports.logout = (req, res) => {
 exports.startCertificacion = (req, res) => {
   const categoria = req.categoria;
 
-  // Validar que exista la categoría
+  // Validar que exista la categoria
   if (!categoria || !PREGUNTAS[categoria]) {
     return res.status(400).json({
       message: "Categoría inválida o no especificada.",
@@ -115,22 +117,21 @@ exports.submit = (req, res) => {
   }
 
   const userAnswers = Array.isArray(answers) ? answers : [];
-
   const questions = PREGUNTAS[categoria].filter(q => askedIds.includes(q.id));
 
   let score = 0;
   const details = [];
 
   for (const q of questions) {
-    const user = userAnswers.find(a => a.id === q.id);
-    const isCorrect = user?.answer === q.correct;
+    const userAnswer = userAnswers.find(a => a.id === q.id);
+    const isCorrect = userAnswer?.answer === q.correct;
 
     if (isCorrect) score++;
 
     details.push({
       id: q.id,
       text: q.text,
-      yourAnswer: user?.answer ?? null,
+      yourAnswer: userAnswer?.answer ?? null,
       correctAnswer: q.correct,
       correct: isCorrect
     });
@@ -139,51 +140,124 @@ exports.submit = (req, res) => {
   examCache.delete(req.userId); // limpiar la sesión del examen
 
   const user = obtenerUsuario(req.userId);
-  user.certificaciones[categoria].examenRealizado = true;
+  const cert = getOrCreateCert(user, categoria);
 
-  res.status(200).json({
-    message: "Respuestas evaluadas",
+  cert.examenRealizado = true;
+  cert.score = score;
+  cert.aprobado = score >= 6; // puedes ajustar tu mínimo
+
+  return res.status(200).json({
+    message: "Respuestas evaluadas correctamente",
     categoria,
     score,
     total: questions.length,
+    aprobado: cert.aprobado,
     details
   });
 };
 
 exports.payment = (req, res) => {
-  const nombre = req.userId;
-  const categoria  = req.categoria;
-  const user = obtenerUsuario(nombre);
-  console.log(categoria);
+  const userId = req.userId;
+  const categoria = req.categoria;
 
-  if (!user || !user.certificaciones[categoria]) {
-    return res.status(400).json({ message: "Categoría inválida" });
+  const user = obtenerUsuario(userId);
+  const cert = getOrCreateCert(user, categoria);
+
+  if (cert.pagado) {
+    return res.status(400).json({ message: "No puedes pagar dos veces este certificado" });
   }
 
-  if (user.certificaciones[categoria].pagado){
-     return res.status(400).json({ message: "No puedes pagar 2 veces el certificado" });
-  }
-
-  user.certificaciones[categoria].pagado = true;
+  cert.pagado = true;
 
   res.status(200).json({
-    message: `Pago registrado para ${nombre} en ${categoria}`,
+    message: `Pago registrado para ${userId} en la certificación ${categoria}`,
     user
   });
-}
+};
 
 exports.checarExamen = (req, res) => {
   const { categoria } = req.body;
   const user = obtenerUsuario(req.userId);
 
-  const cert = user.certificaciones[categoria];
+  // Validar categoría real
+  if (!categoria || !PREGUNTAS[categoria]) {
+    return res.status(400).json({ ok: false, message: "Categoría inválida" });
+  }
 
-  if (!cert) return res.status(400).json({ ok: false, message: "Categoría inválida" });
-  if (!cert.pagado) return res.status(403).json({ ok: false, message: "Primero paga" });
-  if (cert.examenRealizado) return res.status(403).json({ ok: false, message: "Ya hiciste este examen" });
+  const cert = getOrCreateCert(user, categoria);
+
+  if (!cert.pagado)
+    return res.status(403).json({ ok: false, message: "Primero paga" });
+
+  if (cert.examenRealizado)
+    return res.status(403).json({ ok: false, message: "Ya hiciste este examen" });
 
   return res.status(200).json({ ok: true });
-}
+};
+
+// exports.generarCertificado = (req, res) => {
+//   const {
+//     nombreCompleto,
+//     certificacion,
+//     fecha,
+//     ciudad
+//   } = req.body;
+
+//   const empresa = "Open Digital Code";
+//   const instructor = "Ing. Joel Narvaez MArtinez";
+//   const ceo = "Dra. Ana Lorena Rosales";
+
+
+//   res.setHeader("Content-Type", "application/pdf");
+//   res.setHeader(
+//     "Content-Disposition",
+//     `attachment; filename=certificado_${nombreCompleto.replace(/\s+/g, "_")}.pdf`
+//   );
+
+//   const doc = new PDFDocument({ size: "A4", layout: "landscape" });
+//   doc.pipe(res);
+
+//   doc.rect(0, 0, doc.page.width, doc.page.height).fill("#ffffff");
+
+//   doc.image(path.join(__dirname, "../public/cert/logo.png"), 50, 40, { width: 140 });
+
+//   doc.fontSize(28)
+//      .font("Helvetica-Bold")
+//      .fillColor("#000")
+//      .text("CERTIFICADO DE COMPETENCIA", 0, 80, { align: "center" });
+
+//   doc.fontSize(14)
+//      .font("Helvetica")
+//      .text(`Por haber aprobado el examen oficial de certificación`, { align: "center" });
+
+//   doc.moveDown(1.2);
+//   doc.fontSize(40)
+//      .fillColor("#5C2CDF")
+//      .font("Helvetica-Bold")
+//      .text(nombreCompleto, { align: "center" });
+
+//   doc.moveDown(0.5);
+//   doc.fontSize(22)
+//      .fillColor("#000")
+//      .text(certificacion, { align: "center" });
+
+//   doc.moveDown(1);
+//   doc.fontSize(14)
+//      .text(`Fecha: ${fecha}`, { align: "center" });
+
+//   doc.text(`Ciudad: ${ciudad}`, { align: "center" });
+//   doc.text(`Empresa certificadora: ${empresa}`, { align: "center" });
+
+//   const yBase = 350;
+
+//   doc.image(path.join(__dirname, "../Certificacion/formaInstructor.png"), 160, yBase, { width: 150 });
+//   doc.text(instructor, 150, yBase + 80, { width: 200, align: "center" });
+
+//   doc.image(path.join(__dirname, "../Certificacion/firmaCEO.png"), 520, yBase, { width: 150 });
+//   doc.text(ceo, 510, yBase + 80, { width: 200, align: "center" });
+
+//   doc.end();
+// };
 
 
 

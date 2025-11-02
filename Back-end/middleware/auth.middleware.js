@@ -57,15 +57,23 @@ exports.obtenerUsuario = (nombre) => {
   if (!usuarios.has(nombre)) {
     usuarios.set(nombre, {
       nombre,
-      certificaciones: {
-        javascript: { pagado: false, examenRealizado: false },
-        cpp: { pagado: false, examenRealizado: false },
-        node: { pagado: false, examenRealizado: false },
-        redes: { pagado: false, examenRealizado: false }
-      }
+      certificaciones: {}
     });
   }
   return usuarios.get(nombre);
+};
+
+
+exports.getOrCreateCert = (user, categoria) => {
+  if (!user.certificaciones[categoria]) {
+    user.certificaciones[categoria] = {
+      pagado: false,
+      examenRealizado: false,
+      aprobado: false,
+      score: 0
+    };
+  }
+  return user.certificaciones[categoria];
 };
 
 
