@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Examen</title>
+  <style>
+    main {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #ff9800;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .ok { color: green; font-weight: bold; }
+    .bad { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Examen de <span id="nombreCategoria"></span></h1>
+</header>
+
+<main>
+  <button id="btnCargar">Iniciar Examen (POST)</button>
+
+  <form id="quizForm" style="display:none; margin-top: 20px;">
+    <div id="listaPreguntas"></div>
+    <button type="submit">Enviar Examen</button>
+  </form>
+
+  <div id="resultado" style="margin-top: 20px;"></div>
+</main>
+
+<script src="js/examen.js"></script>
+
+</body>
+</html>

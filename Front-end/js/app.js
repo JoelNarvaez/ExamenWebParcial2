@@ -91,6 +91,15 @@ function checkSession() {
   }
 }
 
+function checkPago() {
+  const userName = localStorage.getItem('userName');
+  if (userName) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // --- Actualizar UI cuando hay sesión ---
 function updateUILoggedIn(userName) {
   document.getElementById('userName').textContent = userName;
@@ -134,6 +143,7 @@ async function logout() {
 
 // --- Manejo del modal de pago ---
 document.addEventListener('DOMContentLoaded', function() {
+
   const btnPagoJS = document.getElementById('btn-pago-js');
   const pagoModal = document.getElementById('pagoModal');
   const closePagoModal = document.getElementById('closePagoModal');
@@ -141,7 +151,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Abrir el modal de pago al hacer clic en "Pagar"
   btnPagoJS.onclick = () => {
-    pagoModal.style.display = 'block';
+    if(checkPago()){
+      const categoria = btnPagoJS.value; 
+      localStorage.setItem("categoria", categoria);
+      pagoModal.style.display = 'block';
+    }
+    else{
+      alert("Inicia sesion");
+    }
   };
 
   // Cerrar modal con la X
@@ -156,20 +173,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // Enviar formulario de pago
+  // Enviar formulario de pago local
   formPago.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert("Pago procesado correctamente. ¡Gracias por tu compra!");
     pagoModal.style.display = 'none';
     formPago.reset();
   });
 });
 
-const btnPagoJs = document.getElementById("btn-pago-js");
 
-btnPagoJs.addEventListener("click", async () => {
+// --- Enviar pago al servidor ---
+const pagarCertificacion = document.getElementById("btn-confirmar-pago");
+
+pagarCertificacion.addEventListener("click", async () => {
   const token = localStorage.getItem("token");
-  const categoria = document.getElementById("btn-pago-js").value; // luego lo tomas dinámicamente
+  const categoria = localStorage.getItem("categoria");
 
   try {
     const res = await fetch("http://localhost:3000/api/payment", {
@@ -184,17 +202,46 @@ btnPagoJs.addEventListener("click", async () => {
     const data = await res.json();
 
     if (!res.ok) {
-      return alert(data.message);
+      return alert(data.message ?? "Error al pagar");
     }
 
-    alert(`Pago registrado correctamente
-      ${data.message}`);
-   
-    // Aquí puedes actualizar la UI (ej. marcar pago en pantalla)
-    // updateUIPaymentSuccess(categoria);
+    alert(`Gracias por tu pago. ${data.message}`);
+    localStorage.removeItem("categoria");
 
   } catch (err) {
     console.error("Error de conexión:", err);
     alert("Error de conexión con el servidor");
   }
 });
+
+const btnExamenJS = document.getElementById("btn-examen-js");
+
+btnExamenJS.addEventListener("click", async () => {
+  const token = localStorage.getItem("token");
+  const categoria = btnExamenJS.value;
+
+  if (!token) return alert("Inicia sesión primero");
+
+  const res = await fetch("http://localhost:3000/api/checarExamen", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify({ categoria })
+  });
+
+  const data = await res.json();
+
+  if (!data.ok) {
+    alert(data.message);
+    return;
+  }
+
+  localStorage.setItem("categoria", categoria);
+
+  window.location.href = "examen.html";
+});
+
+
+
