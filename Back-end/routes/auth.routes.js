@@ -22,6 +22,6 @@ router.post("/start", verifyToken, startCertificacion);
 
 router.post("/submit", verifyToken, submit);
 
-// router.post("/pdf", verifyToken, generarCertificado);
+router.post("/pdf", verifyToken, generarCertificado);
 
 module.exports = router;

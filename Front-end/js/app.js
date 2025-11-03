@@ -166,8 +166,7 @@ async function logout() {
       });
   } finally {
     // Siempre limpiar localStorage y actualizar UI, incluso si hay error
-    localStorage.removeItem('token');
-    localStorage.removeItem('userName');
+    localStorage.clear();
     updateUILoggedOut();
   }
 }
