@@ -5,6 +5,8 @@ const {
   getOrCreateCert,
 } = require("../middleware/auth.middleware");
 
+const examCache = new Map(); 
+
 exports.startCertificacion = (req, res) => {
   const categoria = req.categoria;
 

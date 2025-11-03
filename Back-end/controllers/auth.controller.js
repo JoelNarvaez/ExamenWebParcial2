@@ -5,10 +5,6 @@ const {
   deleteSession,
 } = require("../middleware/auth.middleware");
 
-
-const examCache = new Map(); // userId -> [ids]
-exports.examCache = examCache;
-
 // Función controladora para manejar el login
 exports.login = (req, res) => {
   // Extrae 'cuenta' del body de la petición (protección contra body undefined)
