@@ -12,7 +12,7 @@
     <header>
         <nav class="menu">
             <div class="menu-izquierda">
-                <a href="index.html" class="logo">LOGO</a>
+                <a href="index.html" class="logo"><img src="imagenes/logo-titulo.png" alt="Logo"></a>
             </div>
              <div class="menu-central">
                 <a href="index.html" class="inicio">Inicio</a>
@@ -20,27 +20,39 @@
                 <a href="contacto.html" class="contacto">Contacto</a>
                 <a href="nosotros.html" class="nosotros">Nosotros</a>
             </div>
-            <div class="menu-izquierda">
+            <div class="menu-derecha">
+            <div id="userInfo">
+                <img src="imagenes/usuario.jpg" alt="Usuario" class="icono-usuario">
                 <span id="userName" class="user-name"></span>
-                <button id="loginBtn" class="login-btn" title="Login">
-                    <span class="login-Menu">Iniciar Sesión</span>
-                </button>
-                <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
-                    <span class="logout-Menu">Cerrar Sesión</span>
-                </button>
+            </div>
+
+            <button id="loginBtn" class="login-btn" title="Login">
+                <span class="login-Menu">Iniciar Sesión</span>
+            </button>
+
+            <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
+                <span class="logout-Menu">Cerrar Sesión</span>
+            </button>
             </div>
         </nav>
     </header>
 
     <!-- Secciones de la página de inicio -->
     <main>
+        <section>
+            <div class="subencabezado">
+
+            </div>
+        </section>
         <section class="hero-image">
             <div class="hero-container">
                 <div class="hero-text">
-                <h1>Certificación de Programación</h1>
-                <p>And I'm a Photographer</p>
-                <button>Explorar Cursos</button>
-            </div>
+                    <h1>Certificaciones de Programación</h1>
+                    <p>Digital Idea</p>
+                    <a href="certificaciones.html" target="_blank">
+                        <button>Ver Certificaciones</button>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -119,10 +131,6 @@
                     </div>
                 </div>
             </div>
-            
-            
-
-            <!-- PENDIENTE ESTA SECCION -->
         </section>
     </main>
 
@@ -167,6 +175,7 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/inicio.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

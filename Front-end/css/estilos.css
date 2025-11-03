@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   padding: 0;
   box-sizing:border-box;
+  font-family: 'Courier New', Courier, monospace;
 }
 .contenedor-pagina{
   min-height: 100vh;
@@ -12,9 +13,17 @@ html, body {
 
 .menu a{
   text-decoration: none;  
+  color:grey;
+  align-items: center;
 }
 
+.menu{
+  color:grey;
+}
 
+.menu img{
+  height: 3rem;
+}
 /* Modal Login y Logout */
 .modal {
 	display: none;
@@ -47,11 +56,36 @@ html, body {
 	transition: color 0.2s;
 }
 
+.menu-derecha {
+  display: flex;
+  align-items: center; /* Centra verticalmente todo */
+  gap: 1rem; /* Espacio entre el nombre, imagen y botones */
+  padding: 2rem;
+}
+
+#userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre la imagen y el nombre */
+}
+
+.icono-usuario {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #333;
+}
+
 /* Estilo de menú */
 .menu{
     display: flex;
     justify-content: space-around;
-
+    align-items: center;
 }
 
 .menu-central{
@@ -65,9 +99,32 @@ html, body {
 }
 
 .menu-derecha{
-    padding: 2rem;
+  padding: 2rem;
 }
 
+.menu-derecha button{
+  padding: 10rem;
+  border-radius: 8px;
+}
+
+#loginBtn{
+    padding: 10rem;
+    border-radius: 8px;
+}
+
+#logoutBtn{
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: #f7ca0f;
+  border: none;
+  color:black;
+  font-weight: bold;
+}
+
+.subencabezado{
+  background: #5584cb;
+  height: 2.5rem;
+}
 .certificaciones-contenedor{
   margin-right: 8rem;
   margin-left: 8rem;
@@ -130,59 +187,6 @@ html, body {
   text-align: left;
   padding-left: 10rem;
   color: #666666; ;
-}
-
-/* Preguntas frecuentes */
-.preguntas-frecuentes-box{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50rem;
-  background: wheat;
-}
-.acordeon-preguntas{
-  width:800px;
-}
-
-.acordeon-preguntas .contenedor-preguntas{
-  position: relative;
-  margin: 10px 20px;
-}
-
-.acordeon-preguntas .contenedor-preguntas .label-lista{
-  position: relative;
-  padding:10px;
-  background: #3aa3a0;
-  color: white;
-  cursor: pointer;
-}
-
-.acordeon-preguntas .contenedor-preguntas .label-lista::before{
- content: '+';
- position: absolute;
- top: 50%;
- right: 20px;
- transform: translateY(-50%);
- font-size: 1.5rem;
-}
-
-.acordeon-preguntas .contenedor-preguntas.active .label-lista::before{
-  content:'-';
-}
-
-.acordeon-preguntas .contenedor-preguntas .contenido-preguntas {
-  position: relative;
-  padding: 10px;
-  background: white;
-  height:0;
-  overflow: hidden;
-  transition:0.5s;
-  overflow-y: auto;
-}
-
-.acordeon-preguntas .contenedor-preguntas.active .contenido-preguntas{
-  height: 150px; 
-  padding:10px;
 }
 
 /* Footer */
