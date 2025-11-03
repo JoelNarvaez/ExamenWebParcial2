@@ -1,8 +1,9 @@
 const express = require("express");
-const { login, logout, getProfile} = require("../controllers/auth.controller");
-const { verifyToken } = require("../middleware/auth.middleware");
-const { startCertificacion, payment, checarExamen, submit, generarCertificado} = require("../controllers/auth.controller");
-const { contacto } = require("../controllers/auth.controller");
+const { login, logout} = require("../controllers/auth.controller");
+const { verifyToken} = require("../middleware/auth.middleware");
+const { startCertificacion, payment, checarExamen, submit} = require("../controllers/exam.controller");
+const { contacto } = require("../controllers/contact.controller");
+const { generarCertificado } = require("../controllers/cert.controller");
 
 const router = express.Router();
 
@@ -11,7 +12,6 @@ router.post("/login", login);
 router.post("/contacto", contacto);
 
 // Rutas protegidas (requieren token)
-// POST /api/logout - Cerrar sesión
 router.post("/logout", verifyToken, logout);
 
 router.post("/payment",verifyToken, payment);
@@ -22,6 +22,6 @@ router.post("/start", verifyToken, startCertificacion);
 
 router.post("/submit", verifyToken, submit);
 
-// router.post("/pdf", verifyToken, generarCertificado);
+router.post("/pdf", verifyToken, generarCertificado);
 
 module.exports = router;

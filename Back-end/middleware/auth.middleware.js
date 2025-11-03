@@ -37,22 +37,6 @@ exports.verifyToken = (req, res, next) => {
 };
 
 
-/**
- * Función para crear una nueva sesión
- * @param {string} userId - ID del usuario
- * @returns {string} token - Token generado
- */
-exports.createSession = (userId) => {
-  const crypto = require('crypto');
-  // Usar crypto.randomUUID cuando esté disponible (Node 14.17+).
-  // Si no está disponible, hacer fallback a randomBytes para compatibilidad.
-  const token = (typeof crypto.randomUUID === 'function')
-    ? crypto.randomUUID()
-    : crypto.randomBytes(32).toString('hex');
-  sessions.set(token, userId);
-  return token;
-};
-
 exports.obtenerUsuario = (nombre) => {
   if (!usuarios.has(nombre)) {
     usuarios.set(nombre, {
@@ -76,6 +60,22 @@ exports.getOrCreateCert = (user, categoria) => {
   return user.certificaciones[categoria];
 };
 
+
+/**
+ * Función para crear una nueva sesión
+ * @param {string} userId - ID del usuario
+ * @returns {string} token - Token generado
+ */
+exports.createSession = (userId) => {
+  const crypto = require('crypto');
+  // Usar crypto.randomUUID cuando esté disponible (Node 14.17+).
+  // Si no está disponible, hacer fallback a randomBytes para compatibilidad.
+  const token = (typeof crypto.randomUUID === 'function')
+    ? crypto.randomUUID()
+    : crypto.randomBytes(32).toString('hex');
+  sessions.set(token, userId);
+  return token;
+};
 
 /**
  * Función para eliminar una sesión (logout)

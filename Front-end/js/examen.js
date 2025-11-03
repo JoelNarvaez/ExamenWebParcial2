@@ -6,24 +6,24 @@ const resultado = document.getElementById("resultado");
 let preguntas = [];
 const fecha = new Date().toLocaleDateString();
 
-
-// Mostrar nombre categoria
+// Mostrar info del usuario
 document.getElementById("nombreCategoria").textContent = localStorage.getItem("categoria");
 document.getElementById("nombreUsuario").textContent += localStorage.getItem("nombreCompleto");
 document.getElementById("cuentaUsuario").textContent += localStorage.getItem("userName");
 document.getElementById("fechaAplicacion").textContent += fecha;
 
-// Funcion para mezclar opciones
+// Limpiar restos
+localStorage.removeItem("categoriaAprobada");
+
 function mezclar(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
 
-// Iniciar examen 
+// Solicitar examen
 btnCargar.addEventListener("click", async () => {
   const token = localStorage.getItem("token");
   const categoria = localStorage.getItem("categoria");
 
-  // Validar acceso
   const check = await fetch(`${API}/checarExamen`, {
     method: "POST",
     headers: {
@@ -36,7 +36,6 @@ btnCargar.addEventListener("click", async () => {
   const checkData = await check.json();
   if (!checkData.ok) return alert(checkData.message);
 
-  // Pedir preguntas 
   const res = await fetch(`${API}/start`, {
     method: "POST",
     headers: {
@@ -48,19 +47,21 @@ btnCargar.addEventListener("click", async () => {
 
   const data = await res.json();
   preguntas = data.questions;
-  let enumeracion = 0;
 
+  let num = 0;
   listaPreguntas.innerHTML = "";
   preguntas.forEach((q) => {
-    const opciones = mezclar([...q.options]); 
+    const opciones = mezclar([...q.options]);
     btnCargar.remove();
+
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
-      <p><strong>${enumeracion += 1}.</strong> ${q.text}</p>
+      <p><strong>${++num}.</strong> ${q.text}</p>
       ${opciones.map(opt => `
         <label>
-          <input type="radio" name="q_${q.id}" value="${opt}"> ${opt}
+          <input type="radio" name="q_${q.id}" value="${opt}">
+          ${opt}
         </label><br>
       `).join("")}
     `;
@@ -71,7 +72,7 @@ btnCargar.addEventListener("click", async () => {
   resultado.innerHTML = "";
 });
 
-// Enviar examen
+// Enviar respuestas
 quizForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -108,6 +109,77 @@ quizForm.addEventListener("submit", async (e) => {
     `).join("")}
   `;
 
-  // Bloquear otro intento
-  localStorage.removeItem("categoria");
+  quizForm.style.display = "none";
+
+  if (data.aprobado) {
+    alert(`¡Felicidades! Aprobaste con ${data.score}/${data.total}`);
+
+    // Guardar categoria aprobada SOLO aquí
+    localStorage.setItem("categoriaAprobada", categoria);
+
+    resultado.innerHTML += `
+      <div style="text-align:center; margin-top:15px;">
+        <button id="btnDescargarCert">Descargar Certificado</button>
+        <button id="btnRegresarInicioCert" style="margin-left:15px;">Volver al inicio</button>
+      </div>
+    `;
+
+    document.getElementById("btnDescargarCert").addEventListener("click", descargarCertificado);
+
+    document.getElementById("btnRegresarInicioCert").addEventListener("click", () => {
+      localStorage.removeItem("categoriaAprobada");
+      localStorage.removeItem("categoria");
+      window.location.href = "index.html";
+    });
+
+  } else {
+    alert(`No aprobaste. Obtuviste ${data.score}/${data.total}`);
+
+    // Borrar categoría si falló
+    localStorage.removeItem("categoria");
+
+    resultado.innerHTML += `
+      <div style="text-align:center; margin-top:15px;">
+        <button id="btnRegresarInicio">Volver al inicio</button>
+      </div>
+    `;
+
+    document.getElementById("btnRegresarInicio").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  }
 });
+
+// Descargar PDF
+async function descargarCertificado() {
+  const token = localStorage.getItem("token");
+
+  const body = {
+    nombreCompleto: localStorage.getItem("nombreCompleto"),
+    certificacion: localStorage.getItem("categoriaAprobada"),
+    fecha: fecha,
+    ciudad: "Aguascalientes, México"
+  };
+
+  const res = await fetch(`${API}/pdf`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    alert(data.message);
+    return;
+  }
+
+  const blob = await res.blob();
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `certificado_${body.nombreCompleto}.pdf`;
+  a.click();
+}
