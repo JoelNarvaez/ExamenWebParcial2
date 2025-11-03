@@ -1,0 +1,21 @@
+/* Página de Nosotros */
+.nosotros-contenedor{
+  display: flex;
+  justify-content: space-around;
+}
+
+.nosotros-card {
+    flex: 1;                            /* Cada card toma el mismo espacio */
+    background-color:white;          /* Fondo blanco */
+    padding: 20px;                     /* Espaciado interno */
+    border-radius: 8px;               /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.nosotros-card img {
+    width: 80%;                     /* Ancho completo del contenedor */
+    height: 400px;                   /* Altura fija */
+    object-fit:contain;               /* Mantiene las proporciones de la imagen */
+    border-radius: 8px;              /* Bordes redondeados en la imagen */
+    margin-bottom: 15px;            /* Espacio debajo de la imagen */
+}

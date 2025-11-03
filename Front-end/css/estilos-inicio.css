@@ -1,0 +1,126 @@
+/* Imagen de Hero 
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../imagenes/hero.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+} */
+
+
+.hero-image {
+  height: 80vh; 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../imagenes/hero2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.certificaciones-contenedor-inicio{
+  margin-right: 8rem;
+  margin-left: 8rem;
+}
+.certificaciones-contenedor-inicio button {
+    position: absolute;
+    top: 89%; /* lo centra verticalmente */
+    left: 50%; /* lo centra horizontalmente */
+    transform: translate(-50%, -50%); /* ajuste exacto para centrar */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(58, 163, 160, 0.8); /* semitransparente sobre la imagen */
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.certificaciones-contenedor-inicio button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.certificaciones-superior-inicio{
+  display:flex;
+  gap:6rem;
+  width: 100%;
+}
+
+.certificaciones-inferior-inicio{
+  display:flex;
+  gap:6rem;
+  width: 100%;
+}
+.certificaciones-titulo-inicio{
+  text-align: center;
+  font-size: 2rem;
+}
+/*.certificacion-imagen{
+  width: 50%;
+}*/
+
+.certificacion-card-inicio {
+    flex: 1;                      /* Cada card toma el mismo espacio */
+    background-color:white;          /* Fondo blanco */
+    padding: 0;                     /* Espaciado interno */
+    border-radius: 8px;               /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.certificacion-card-inicio img {
+    flex:1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* o contain si no quieres recortes */
+    display: block;
+}
+ب
+.certificacion-card-inicio h3 {
+    font-size: 1.3rem;               /* Tamaño de fuente */
+    color: #333333;               /* Color gris oscuro */
+    margin-bottom: 10px;            /* Espacio debajo del título */
+    text-align: center;
+}
+
+.certificacion-card-inicio p {
+    color: #666666;              /* Color gris medio */
+    line-height: 1.6;              /* Espaciado entre líneas */
+}
+
+.lista-certificaciones-inicio{
+  text-align: left;
+  padding-left: 10rem;
+  color: #666666; ;
+}
