@@ -140,7 +140,7 @@ hr{
   background-color: transparent;
   width: 300px;
   height: 320px;
-  perspective: 1000px; /* profundidad para el efecto */
+  perspective: 1000px; 
 }
 
 .flip-box-inner {
@@ -235,9 +235,6 @@ hr{
   text-align: center;
   font-size: 2rem;
 }
-/*.certificacion-imagen{
-  width: 50%;
-}*/
 
 .certificacion-card-inicio {
     flex: 1;                      /* Cada card toma el mismo espacio */
@@ -270,9 +267,10 @@ hr{
   justify-content: center;
   align-items: flex-start;
   height: 46rem;
+  font-size: 1.2rem;
 }
 .acordeon-preguntas{
-  width:800px;
+  width:60%;
 }
 
 .acordeon-preguntas .contenedor-preguntas{

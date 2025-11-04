@@ -15,8 +15,9 @@ body {
   color:white;
   border: none;
   font-family: 'Quicksand', sans-serif !important;
-  width:7rem;
+  width:8rem;
   height: 3rem;
+  font-size: 1rem;
 }
 
 .certificaciones-superior{
@@ -86,8 +87,19 @@ body {
   color:white;
   border: none;
   font-family: 'Quicksand', sans-serif !important;
-  width:7rem;
+  width:8rem;
   height: 3rem;
+  font-size: 1rem;
+}
+
+.btn-confirmar{
+  background: #f7ca0f;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+#formPago{
+  font-family: 'Quicksand', sans-serif !important;
 }
 
 

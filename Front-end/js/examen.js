@@ -68,9 +68,9 @@ btnCargar.addEventListener("click", async () => {
       <p><strong>${++num}.</strong> ${q.text}</p>
       ${opciones.map(opt => `
         <label>
-          <input type="radio" name="q_${q.id}" value="${opt}">
+          <input type="radio" class="radio-buttons" name="q_${q.id}" value="${opt}">
           ${opt}
-        </label><br>
+        </label>
       `).join("")}
     `;
     listaPreguntas.appendChild(div);
