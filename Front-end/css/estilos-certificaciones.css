@@ -7,7 +7,7 @@ body {
   margin-left: 8rem;
 }
 
-.certificaciones-contenedor button{
+.pagar-btn, .examen-btn{
   padding:0.6rem;
   border-radius: 8px;
   margin:0.4rem;
@@ -18,6 +18,7 @@ body {
   width:7rem;
   height: 3rem;
 }
+
 .certificaciones-superior{
   display:flex;
   gap:6rem;
@@ -76,3 +77,18 @@ body {
 .certificaciones-titulo {
     color:#737373;
 }
+
+.pagar-btn-otro, .examen-btn-otro{
+  padding:0.6rem;
+  border-radius: 8px;
+  margin:0.4rem;
+  background: #d1d0d0;
+  color:white;
+  border: none;
+  font-family: 'Quicksand', sans-serif !important;
+  width:7rem;
+  height: 3rem;
+}
+
+
+

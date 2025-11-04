@@ -39,6 +39,7 @@ main {
     color:white; 
     margin-top: 1rem;
     font-weight: bold;
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 #btnDescargarCert{
@@ -49,6 +50,7 @@ main {
     color:white; 
     margin-top: 1rem;
     font-weight: bold;
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 
@@ -60,6 +62,17 @@ main {
     color:white; 
     margin-top: 1rem;
     font-weight: bold;
+    font-family: 'Quicksand', sans-serif !important;
 }
 
+.btnRegresarInicio{
+    padding:1rem;
+    border-radius: 8px;
+    background: #723d99;
+    border: none;
+    color:white; 
+    margin-top: 1rem;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif !important;
+}
 

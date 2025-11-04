@@ -157,7 +157,7 @@ quizForm.addEventListener("submit", async (e) => {
     localStorage.removeItem("categoria");
 
     resultado.innerHTML += `
-      <div style="text-align:center; margin-top:15px;">
+      <div>
         <button id="btnRegresarInicio">Volver al inicio</button>
       </div>
     `;
