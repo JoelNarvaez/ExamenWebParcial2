@@ -127,7 +127,7 @@ quizForm.addEventListener("submit", async (e) => {
       icon: "success"
     });
 
-    // Guardar categoria aprobada SOLO aquí
+    
     localStorage.setItem("categoriaAprobada", categoria);
 
     resultado.innerHTML += `
@@ -153,7 +153,7 @@ quizForm.addEventListener("submit", async (e) => {
       icon: "error",
     });
 
-    // Borrar categoría si falló
+
     localStorage.removeItem("categoria");
 
     resultado.innerHTML += `
