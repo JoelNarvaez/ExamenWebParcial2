@@ -94,6 +94,14 @@ exports.submit = (req, res) => {
   cert.score = score;
   cert.aprobado = score >= 6; 
 
+  console.log({
+  message: "Respuestas evaluadas correctamente",
+  categoria,
+  score,
+  total: questions.length,
+  aprobado: cert.aprobado
+});
+
   return res.status(200).json({
     message: "Respuestas evaluadas correctamente",
     categoria,
@@ -102,6 +110,8 @@ exports.submit = (req, res) => {
     aprobado: cert.aprobado,
     details,
   });
+
+
 };
 
 exports.payment = (req, res) => {
@@ -114,7 +124,7 @@ exports.payment = (req, res) => {
   if (cert.pagado) {
     return res
       .status(400)
-      .json({ message: "No puedes pagar dos veces este certificado" });
+      .json({ message: "Ya pagaste esta certificación" });
   }
 
   cert.pagado = true;
