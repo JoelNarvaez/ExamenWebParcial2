@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificacion</title>
+    <link rel="shortcut icon" href="imagenes/favicon-sf.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/0209f1a64b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos-certificaciones.css">
 </head>
 <body>
     <header>
         <nav class="menu">
             <div class="menu-izquierda">
-                <a href="index.html" class="logo">LOGO</a>
+                <a href="index.html" class="logo"><img src="imagenes/logo-imagen.png" alt="Logo"></a>
             </div>
              <div class="menu-central">
                 <a href="index.html" class="inicio">Inicio</a>
@@ -19,16 +21,22 @@
                 <a href="contacto.html" class="contacto">Contacto</a>
                 <a href="nosotros.html" class="nosotros">Nosotros</a>
             </div>
-            <div class="menu-izquierda">
+            <div class="menu-derecha">
+            <div id="userInfo">
+                <img src="imagenes/usuario.jpg" alt="Usuario" class="icono-usuario">
                 <span id="userName" class="user-name"></span>
-                <button id="loginBtn" class="login-btn" title="Login">
-                    <span class="login-Menu">Iniciar Sesión</span>
-                </button>
-                <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
-                    <span class="logout-Menu">Cerrar Sesión</span>
-                </button>
+            </div>
+
+            <button id="loginBtn" class="login-btn" title="Login">
+                <span class="login-Menu">Iniciar Sesión</span>
+            </button>
+
+            <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
+                <span class="logout-Menu">Cerrar Sesión</span>
+            </button>
             </div>
         </nav>
+        <div class="subencabezado"></div>
     </header>
 
     <!-- Secciones de la página de inicio -->
@@ -40,15 +48,16 @@
         <div class="certificaciones-superior">
         <div class="certificacion-card">
             <img src="imagenes/javascript-logo.jpg" alt="JavaScript">
-            <h3>Certificación en JavaScript</h3>
-            <p><strong> Descripción:</strong> Bla bla</p>
+            <h3 style="color:#ead033">Certificación en JavaScript</h3>
+            <p><strong> Descripción:</strong> JavaScript es el lenguaje elemental para el desarrollo web de frontend, ya que gracias 
+                a él existe una interactividad con la página. En esta certificación se evaluarán tus capacidades en el uso de frameworks 
+                (React y Angular), el manejo del DOM y el desarrollo full-stack a partir del uso de Node.js.</p>
             <p><strong> Ventajas:</strong><ul class="lista-certificaciones">
-                <li>Ejemplo </li>
-                <li>Ejemplo </li> 
-                <li>Ejemplo </li> 
-                <li>Ejemplo </li> 
+                <li>Alta Demanda Web: Es fundamental para cualquier trabajo de desarrollador web frontend y full-stack </li>
+                <li>Versatilidad: Funciona en el navegador y en el servidor.  </li> 
+                <li>Facilidad de aprendizaje: Cuenta con una sintaxis amigable y flexible. </li> 
             </ul></p>
-            <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+            <p><strong> Puntuación Mínima:</strong> 6 aciertos </p>
             <p><strong> Duración del Examen:</strong> 10 min </p>
             <p><strong> Costo de  Certificación:</strong> $3,500 </p>
             <button id="btn-pago-js" class="pagar-btn" title="Pago" value="javascript" >
@@ -61,17 +70,17 @@
 
         <div class="certificacion-card">
             <img src="imagenes/c-sharp-logo.jpg" alt="C#">
-            <h3>Certificación en C#</h3>
-            <p><strong> Descripción:</strong> Bla bla</p>
+            <h3 style="color:#ee528f">Certificación en C#</h3>
+            <p><strong> Descripción:</strong> C# es un lenguaje orientado a objetos y multiplataforma desarrollado por Microsoft, y relacionado con el framework .NET.  
+                La certificación incluye la evaluación de ASP.NET y Windows Forms.</p>
             <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
-                <li>Ejemplo </li>
-                <li>Ejemplo </li> 
-                <li>Ejemplo </li> 
-                <li>Ejemplo </li> 
+                <li>Seguridad integrada. </li>
+                <li>Soporte multiplataforma: Facilita la creación de aplicaciones para Windows, Linux y macOS. </li> 
+                <li>Tiene una alta demanda  en el mercado. </li> 
             </ul></p>
-            <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+            <p><strong> Puntuación Mínima:</strong> 6 aciertos </p>
             <p><strong> Duración del Examen:</strong> 10 min </p>
-            <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+            <p><strong> Costo de  Certificación:</strong> $2,800 </p>
             <button id="btn-pago-c" class="pagar-btn-otro" title="Pago" value="c#" disabled>
                 <span class="pagar-otro">Pagar</span>
             </button>
@@ -84,49 +93,51 @@
         <div class="certificaciones-inferior">
             <div class="certificacion-card">
             <img src="imagenes/python-logo.jpg" alt="Python">
-                <h3>Certificación en Python</h3>
-                <p><strong> Descripción:</strong> Bla bla</p>
+                <h3 style="color: #78a0d1;">Certificación en Python</h3>
+                <p><strong> Descripción:</strong>Python es un lenguaje de alto nivel, fácil de leer y muy versátil.  La certificación incluye la evaluación de la aplicación de Python en Ciencia de Datos (Data Science), 
+                    Machine Learning, desarrollo web (Django/Flask), automatización y scripting. </p>
                 <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
-                    <li>Ejemplo </li>
-                    <li>Ejemplo </li> 
-                    <li>Ejemplo </li> 
-                    <li>Ejemplo </li> 
+                    <li>Tiene una sintaxis clara y sencilla. </li>
+                    <li>Cuenta con una gran biblioteca estándar. </li> 
+                    <li>Es versátil y portátil.</li> 
+                    <li>Permite el desarrollo rápido de prototipos. </li> 
+                    <li>Se integra fácilmente con otros lenguajes. </li>
                 </ul></p>
-                <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+                <p><strong> Puntuación Mínima:</strong> 6 aciertos </p>
                 <p><strong> Duración del Examen:</strong> 10 min </p>
-                <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+                <p><strong> Costo de  Certificación:</strong> $3,900 </p>
                 <button id="btn-pago-py" class="pagar-btn-otro" title="Pago" value="c#" disabled>
                     <span class="pagar-otro">Pagar</span>
                 </button>
                 <button id="btn-inicio-examen-py" class="examen-btn-otro" title="Inicio Examen" value="c#" disabled>
                     <span class="examen-otro">Iniciar Examen</span>
                 </button>
-                <p><strong> Esta certificación estará disponible a partir del 01 de dicimebre de 2025</strong></p>
+                <p><strong> Esta certificación estará disponible a partir del 02 de febrero de 2026</strong></p>
             </div>
             <div class="certificacion-card">
             <img src="imagenes/java-logo.jpg" alt="Java">
-                <h3>Certificación en Java</h3>
-                <p><strong> Descripción:</strong> Bla bla</p>
+                <h3 style="color:#de8e2f">Certificación en Java</h3>
+                <p><strong> Descripción:</strong>Java es un lenguaje de programación orientado a objetos (OOP) robusto, multiplataforma y fundamental en el desarrollo empresarial. Próximamente podrás acceder a
+                     nuestra certificación la cual incluirá evaluación en Java SE (Standard Edition) y Java EE (Enterprise Edition).</p>
                 <p><strong> Ventajas:</strong>  <ul class="lista-certificaciones">
-                    <li>Ejemplo </li>
-                    <li>Ejemplo </li> 
-                    <li>Ejemplo </li> 
-                    <li>Ejemplo </li> 
+                    <li>Independencia de plataforma: El código se ejecuta en diferentes sistemas operativos. </li>
+                    <li>Cuenta con una gran comunidad de soporte. </li> 
+                    <li>Tiene seguridad integrada. </li> 
+                    <li>Es fundamental para el desarrollo de aplicaciones Android y sistemas empresariales de gran escala. </li> 
                 </ul></p>
-                <p><strong> Puntuación Mínima:</strong> 6.25 </p>
+                <p><strong> Puntuación Mínima:</strong> 6 aciertos </p>
                 <p><strong> Duración del Examen:</strong> 10 min </p>
-                <p><strong> Costo de  Certificación:</strong> $3,400 </p>
+                <p><strong> Costo de  Certificación:</strong> $5,600 </p>
                 <button id="btn-pago-jv" class="pagar-btn-otro" title="Pago" value="c#" disabled>
                     <span class="pagar-otro">Pagar</span>
                 </button>
                 <button id="btn-inicio-examen-jv" class="examen-btn-otro" title="Inicio Examen" value="c#" disabled>
                     <span class="-examen-otro">Iniciar Examen</span>
                 </button>
-                <p><strong> Esta certificación estará disponible a partir del 01 de dicimebre de 2025</strong></p>
+                <p><strong> Esta certificación estará disponible a partir del 24 de noviembre de 2025</strong></p>
             </div>
         </div>
     </div>
-    
     </section>
 
     </main>
@@ -174,37 +185,44 @@
                 <input type="text" id="nombreLogin" placeholder="Nombre Completo" required>
                 <input type="text" id="login" placeholder="Usuario" required>
                 <input type="password" id="password" placeholder="Contraseña" required>
-                <button type="submit">Enviar</button>
+                <button type="submit" class="login-modal-button">Enviar</button>
             </form>
         </div>
   </div>
 
 <footer class="footer">
-        <div class="footer-contenedor">
-            <div class="footer-contenido">
-                <div class="footer-info">
-                <h3>Certificaciones</h3>
-                <p>Texto de ejemplo footer</p>
-                <p>Texto de ejemplo footer</p>
-                </div>
-                <div class="footer-redes">
-                    <h4>Síguenos en redes sociales</h4>
-                    <div class="redes-sociales">    
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
+    <div class="footer-contenedor">
+        <div class="footer-contenido">
+            <div class="footer-info">
+            <h3>Digital Academy: Certificaciones en Lenguajes de Programación</h3>
+            <p>"Programa tu futuro"</p>
+            <img src="imagenes/logo-footer.png" alt="Digital Academy">
+            </div>
+            <div class="footer-redes">
+                <h4>Síguenos en redes sociales</h4>
+                <div class="redes-sociales">    
+                    <a href="https://www.facebook.com/share/1Li3KJci2q/" class="red-social">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/digital.academy.programacion?igsh=enp0Nm4zeXhnZm42" class="red-social">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025. Todos los derechos reservadosb.</p>
-            </div>
+            <div class="menu-footer-contenedor">
+                <ul class="menu-footer">
+                <li> <a href="index.html" class="inicio">Inicio</a></li> 
+                <li><a href="certificaciones.html" class="certificaciones">Certificaciones</a></li>
+                <li><a href="contacto.html" class="contacto">Contacto</a></li>
+                <li><a href="nosotros.html" class="nosotros">Nosotros</a></li>
+            </ul>
+             </div>
         </div>
-    </footer>
-
+        <div class="footer-copyright">
+            <p>&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
     <script src="js/app.js"></script>
     <script src="js/pago.js"></script>

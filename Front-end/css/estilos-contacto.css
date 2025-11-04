@@ -1,85 +1,105 @@
-/* Formulario de contacto */
+body {
+  font-family: 'Quicksand', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Contenedor principal --- */
 .contacto-container {
-   display:flex;
-   gap:2rem;
+  display: flex;
+  height: 100vh; /* ocupa todo el alto de la ventana */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* evita desbordes */
 }
 
-.contacto-content{
-    flex:1;
-    justify-content: center;   
-    align-items: center;  
-    padding-top: 10rem;
-    padding-left: 20rem;
+/* --- Imagen a la izquierda --- */
+.contacto-imagen {
+  flex: 1; /* ocupa mitad izquierda */
+  height: 100%;
 }
 
-.contacto-form{
-    display: flex;
-    flex-direction: column;
-    padding-top: 5rem;
-    padding-right: 31rem;
+.contacto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 
-.form-row1{
-    display: flex;
-    flex:1; 
-    gap: 1.25rem;
-    padding:3.75rem;
-    padding-bottom: 5px;
+
+.contacto-form {
+  flex: 1; /* mitad derecha */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 5rem;
+  background-color: #ffffff;
 }
 
-.form-row2{
-    padding-left:3.75rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    width:100px;
+.form-row1 {
+  display: flex;
+  justify-content: flex-start; /* alinea a la izquierda */
+  gap: 1rem; /* pequeña separación entre nombre y apellido */
+  margin-bottom: 1rem;
 }
-#email {
-  width: 26rem;   
-  font-family: Courier;
+
+/* Cada campo ocupa solo lo necesario */
+.form-row1 div {
+  flex: 0 0 auto; /* evita que se estiren */
+}
+
+/* Los inputs no llenan todo el espacio */
+.form-row1 input {
+  width: 20.5rem; 
+}
+
+.form-row2,
+.form-row3 {
+  margin-bottom: 1rem;
+}
+
+/* Campos de entrada */
+input,
+textarea {
+  width: 80%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Quicksand', sans-serif !important;
   font-size: 1rem;
 }
-.form-row2 input, .form-row1 input{
-  padding: 0.4rem;
-}
-.form-row3{
-    display: flex;
-    gap:20px;
-    padding-left:3.75rem;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-}
-.form-row3 textarea{
-    flex: 2;
-    font-family: Courier;
-    font-size: 1rem;
-    padding: 0.6rem;
 
-}
-.form-row4 button{
-    flex:1;
-    padding: 1rem;
-    width: 8rem;
-    border-radius: 8px;
-    color: white;
-    background-color: rgb(22, 179, 194);
-    border-color: rgb(5, 138, 145);
-    font-weight: bold;
-    font-family: Courier;
-    font-size: 1rem;
-    border-style: dotted;
-}
-.form-row4{
-    padding-left:12rem;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
+/* Botón */
+.form-row4 {
+  display: flex;
+  justify-content: center;
 }
 
-.form-row1 input{
-    font-family: Courier;
-    font-size: 1rem;
+.form-row4 button {
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  color: white;
+  background-color: rgb(22, 179, 194);
+  border: none;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.form-row2 input{
-    font-family: Courier;
-    font-size: 1rem;
+.form-row4 button:hover {
+  background-color: rgb(17, 150, 162);
+}
+
+.contacto-info h3{
+    font-size: 2rem;
+    color: #b73f97;
+}
+
+.contacto-info p{
+    font-size: 1.1rem;
+    line-height: 2rem;
+}
+
+.contacto-info{
+    margin-bottom: 2rem;
 }

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificacion</title>
+    <title>Contacto</title>
+    <link rel="shortcut icon" href="imagenes/favicon-sf.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/0209f1a64b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/estilos-contacto.css">
 </head>
 <body>
-    <header>
+        <header>
         <nav class="menu">
             <div class="menu-izquierda">
-                <a href="index.html" class="logo">LOGO</a>
+                <a href="index.html" class="logo"><img src="imagenes/logo-imagen.png" alt="Logo"></a>
             </div>
              <div class="menu-central">
                 <a href="index.html" class="inicio">Inicio</a>
@@ -20,47 +21,58 @@
                 <a href="contacto.html" class="contacto">Contacto</a>
                 <a href="nosotros.html" class="nosotros">Nosotros</a>
             </div>
-            <div class="menu-izquierda">
+            <div class="menu-derecha">
+            <div id="userInfo">
+                <img src="imagenes/usuario.jpg" alt="Usuario" class="icono-usuario">
                 <span id="userName" class="user-name"></span>
-                <button id="loginBtn" class="login-btn" title="Login">
-                    <span class="login-Menu">Iniciar Sesión</span>
-                </button>
-                <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
-                    <span class="logout-Menu">Cerrar Sesión</span>
-                </button>
+            </div>
+
+            <button id="loginBtn" class="login-btn" title="Login">
+                <span class="login-Menu">Iniciar Sesión</span>
+            </button>
+
+            <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
+                <span class="logout-Menu">Cerrar Sesión</span>
+            </button>
             </div>
         </nav>
+        <div class="subencabezado"></div>
     </header>
 
     <!-- Formulario de contacto -->
     <main>
         <section class="contacto-section">
-            <h3>Contacto</h3>
-            <p> ¿Tienes duda sobre nuestros procesos de certificación o deseas dejar algún comentario? No dudes en hacerlo en el formulario que te dejamos abajo. ¡Queremos escucharte!</p>
             <div class="contacto-container">
-                <div class="contacto-content">
+                <!-- <div class="contacto-content">
                     <p>También puedes contactarnos por los siguientes medios: <br> <br> </p>
                     <h3>Teléfono</h3>
                     <p>449-345-67-83 <br> <br> </p>
                     <h3>Email</h3>
                     <p>info@misitio.com<br> <br> </p>
+                </div> -->
+                <div class="contacto-imagen">
+                    <img src="imagenes/contacto-img.jpg" alt="Contacto">
                 </div>
                 <form id="contacto-formulario" class="contacto-form">
+                    <div class="contacto-info"> 
+                        <h3>Contacto</h3>
+                    <p> ¿Tienes duda sobre nuestros procesos de certificación o deseas dejar algún comentario? No dudes en hacerlo en el formulario que te dejamos abajo. ¡Queremos escucharte!</p>
+                    </div>
                     <div class="form-row1">
                         <div>
                             <label for="nombre">Nombre</label><br>
-                            <input type="text" id="nombre"  name="" required><br>
+                            <input type="text" id="nombre"  name="" placeholder="Ejemplo: Sofía" required><br>
                         </div>
                         <div>
                             <label for="apellido">Apellido</label><br>
-                            <input type="text" id="apellido" name="" required> 
+                            <input type="text" id="apellido" name="" placeholder="Ejemplo: Nieto" required> 
                         </div>
                         
                     </div>
                     <div class="form-row2">
                         <div>                    
                             <label for="email">Email</label><br>
-                            <input type="text" id="email"  name=""  required ><br> 
+                            <input type="text" id="email"  name=""  placeholder="Ejemplo: sofia.nieto@gmail.com" required ><br> 
                         </div>
 
                     </div>
@@ -80,46 +92,56 @@
 
     </main>
 
-      <!-- Modal de Login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="formLogin">
-                <input type="text" id="login" placeholder="Usuario" required>
-                <input type="password" id="password" placeholder="Contraseña" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-  </div>
+    <!-- Modal de Login -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="formLogin">
+            <input type="text" id="nombreLogin" placeholder="Nombre Completo" required>
+            <input type="text" id="login" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit" class="login-modal-button">Enviar</button>
+        </form>
+    </div>
+</div>
 
 <footer class="footer">
-        <div class="footer-contenedor">
-            <div class="footer-contenido">
-                <div class="footer-info">
-                <h3>Certificaciones</h3>
-                <p>Texto de ejemplo footer</p>
-                <p>Texto de ejemplo footer</p>
-                </div>
-                <div class="footer-redes">
-                    <h4>Síguenos en redes sociales</h4>
-                    <div class="redes-sociales">    
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
+    <div class="footer-contenedor">
+        <div class="footer-contenido">
+            <div class="footer-info">
+            <h3>Digital Academy: Certificaciones en Lenguajes de Programación</h3>
+            <p>"Programa tu futuro"</p>
+            <img src="imagenes/logo-footer.png" alt="Digital Academy">
+            </div>
+            <div class="footer-redes">
+                <h4>Síguenos en redes sociales</h4>
+                <div class="redes-sociales">    
+                    <a href="https://www.facebook.com/share/1Li3KJci2q/" class="red-social">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/digital.academy.programacion?igsh=enp0Nm4zeXhnZm42" class="red-social">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025. Todos los derechos reservadosb.</p>
-            </div>
+            <div class="menu-footer-contenedor">
+                <ul class="menu-footer">
+                <li> <a href="index.html" class="inicio">Inicio</a></li> 
+                <li><a href="certificaciones.html" class="certificaciones">Certificaciones</a></li>
+                <li><a href="contacto.html" class="contacto">Contacto</a></li>
+                <li><a href="nosotros.html" class="nosotros">Nosotros</a></li>
+            </ul>
+             </div>
         </div>
-    </footer>
-
+        <div class="footer-copyright">
+            <p>&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
     <script src="js/contacto.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

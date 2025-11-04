@@ -53,6 +53,149 @@
   color: white;
 }
 
+/* Presentación */
+
+.presentacion-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 5rem auto;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.contenido-presentacion {
+  flex: 1;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+.presentacion-contenedor p{
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.titulo, .eslogan{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:#5584cb;
+}
+
+h2{
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 2rem;
+  color: #737373;
+}
+
+hr{
+    width: 6rem;
+    height: 1px;
+    background-color: #333333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.img-presentacion {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-presentacion img {
+  width: 100%;
+  max-width: 500px; 
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Sección de razones */
+.razones-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f7f9fa;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.razones-section h2 {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: #0a4c5a;
+}
+
+/* Contenedor principal de las tarjetas */
+.razones-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Flip box */
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 320px;
+  perspective: 1000px; /* profundidad para el efecto */
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Lado frontal */
+.flip-box-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lado trasero */
+.flip-box-back {
+  background-color: #16b3c2;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-box-back h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.flip-box-back p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 .certificaciones-contenedor-inicio{
   margin-right: 8rem;
   margin-left: 12rem;
@@ -125,9 +268,8 @@
 .preguntas-frecuentes-box{
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 50rem;
-  background: wheat;
+  align-items: flex-start;
+  height: 46rem;
 }
 .acordeon-preguntas{
   width:800px;
@@ -141,7 +283,7 @@
 .acordeon-preguntas .contenedor-preguntas .label-lista{
   position: relative;
   padding:10px;
-  background: #3aa3a0;
+  background: #a653a3;
   color: white;
   cursor: pointer;
 }
@@ -170,7 +312,13 @@
 }
 
 .acordeon-preguntas .contenedor-preguntas.active .contenido-preguntas{
-  height: 150px; 
+  height: 70px; 
   padding:10px;
+}
+
+.preguntas-frecuentes h3{
+  color: #737373;
+  text-align: center;
+  font-size: 2rem;
 }
 ب

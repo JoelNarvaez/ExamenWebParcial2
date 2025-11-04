@@ -34,7 +34,15 @@ btnCargar.addEventListener("click", async () => {
   });
 
   const checkData = await check.json();
-  if (!checkData.ok) return alert(checkData.message);
+  //if (!checkData.ok) return alert(checkData.message);
+  if (!checkData.ok) {
+  Swal.fire({
+    icon: "error",
+    title: "Oh no...",
+    text: checkData.message 
+  });
+  return; // detenemos la ejecución aquí
+}
 
   const res = await fetch(`${API}/start`, {
     method: "POST",
@@ -112,7 +120,12 @@ quizForm.addEventListener("submit", async (e) => {
   quizForm.style.display = "none";
 
   if (data.aprobado) {
-    alert(`¡Felicidades! Aprobaste con ${data.score}/${data.total}`);
+    //alert(`¡Felicidades! Aprobaste con ${data.score}/${data.total}`);
+    Swal.fire({
+      title: "¡Felicidades!",
+      text: `Aprobaste con ${data.score}/${data.total}`,
+      icon: "success"
+    });
 
     // Guardar categoria aprobada SOLO aquí
     localStorage.setItem("categoriaAprobada", categoria);
@@ -120,7 +133,7 @@ quizForm.addEventListener("submit", async (e) => {
     resultado.innerHTML += `
       <div style="text-align:center; margin-top:15px;">
         <button id="btnDescargarCert">Descargar Certificado</button>
-        <button id="btnRegresarInicioCert" style="margin-left:15px;">Volver al inicio</button>
+        <button id="btnRegresarInicioCert">Volver al inicio</button>
       </div>
     `;
 
@@ -133,7 +146,12 @@ quizForm.addEventListener("submit", async (e) => {
     });
 
   } else {
-    alert(`No aprobaste. Obtuviste ${data.score}/${data.total}`);
+    //alert(`No aprobaste. Obtuviste ${data.score}/${data.total}`);
+    Swal.fire({
+      title: "No aprobaste",
+      text: `Obtuviste ${data.score}/${data.total}`,
+      icon: "error",
+    });
 
     // Borrar categoría si falló
     localStorage.removeItem("categoria");
@@ -172,7 +190,12 @@ async function descargarCertificado() {
 
   if (!res.ok) {
     const data = await res.json();
-    alert(data.message);
+    //alert(data.message);
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: data.message 
+    });
     return;
   }
 

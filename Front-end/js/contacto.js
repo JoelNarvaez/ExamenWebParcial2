@@ -18,10 +18,21 @@ document.getElementById("contacto-formulario").addEventListener("submit", async 
    
     
     if (respuesta.ok) {
-      alert("Mensaje enviado");
+      //alert("Mensaje enviado");
+      Swal.fire({
+        title: "Mensaje enviado",
+        text: "El mensaje se ha enviado correctamente",
+        icon: "success"
+      });
+
       document.getElementById("contacto-formulario").reset();
     } else {
-      alert("Error al enviar el mensaje");
+      //alert("Error al enviar el mensaje");
+      Swal.fire({
+        icon: "error",
+        title: "Oh no...",
+        text: "Error al enviar el mensaje"
+      });
     }
   } catch (err) {
     console.error("Error:", err);

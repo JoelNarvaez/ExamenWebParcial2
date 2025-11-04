@@ -14,7 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
       pagoModal.style.display = 'block';
     }
     else{
-      alert("Inicia sesion");
+      //alert("Inicia sesion");
+        Swal.fire({
+        icon: "warning",
+        title: "Atención",
+        text: "Debes inicar sesión primero"
+      });
     }
   };
 
@@ -59,15 +64,31 @@ pagarCertificacion.addEventListener("click", async () => {
     const data = await res.json();
 
     if (!res.ok) {
-      return alert(data.message ?? "Error al pagar");
+      //return alert(data.message ?? "Error al pagar");
+      return Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.message ?? "Error al pagar"
+      });
     }
 
-    alert(`Gracias por tu pago. ${data.message}`);
+    //alert(`Gracias por tu pago. ${data.message}`);
+    Swal.fire({
+      icon: "success",
+      title: "Pago exitoso",
+      text: `Gracias por tu pago. ${data.message}`
+    });
+
     localStorage.removeItem("categoria");
 
   } catch (err) {
     console.error("Error de conexión:", err);
-    alert("Error de conexión con el servidor");
+    //alert("Error de conexión con el servidor");
+    Swal.fire({
+      icon: "error",
+      title: "Error de conexión",
+      text: "Error de conexión con el servidor"
+    });
   }
 });
 
@@ -77,7 +98,14 @@ btnExamenJS.addEventListener("click", async () => {
   const token = localStorage.getItem("token");
   const categoria = btnExamenJS.value;
 
-  if (!token) return alert("Inicia sesión primero");
+  //if (!token) return alert("Inicia sesión primero");
+  if (!token) {
+    return Swal.fire({
+      icon: "warning",
+      title: "Atención",
+      text: "Inicia sesión primero"
+    });
+  }
 
   const res = await fetch("http://localhost:3000/api/checarExamen", {
     method: "POST",
@@ -91,7 +119,12 @@ btnExamenJS.addEventListener("click", async () => {
   const data = await res.json();
 
   if (!data.ok) {
-    alert(data.message);
+    //alert(data.message);
+    Swal.fire({
+      icon: "error",
+      title: "Oh no...",
+      text: data.message
+    });
     return;
   }
 
