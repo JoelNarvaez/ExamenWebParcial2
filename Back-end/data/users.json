@@ -1,8 +1,9 @@
 [
-  { "cuenta": "gina",     "contrasena": "1234", "nombre":"Gina Salazar" },
-  { "cuenta": "Joel Narvaez",    "contrasena": "abcd", "nombre":"Joel Narvaez" },
-  { "cuenta": "karla",    "contrasena": "pass1", "nombre":"Karla Perez" },
-  { "cuenta": "luis",     "contrasena": "secreto", "nombre":"Luis" },
-  { "cuenta": "andrea",   "contrasena": "qwerty", "nombre":"Andrea" },
-  { "cuenta": "prof_uaa", "contrasena": "angular17", "nombre":"Juan" }
+{ "cuenta": "joel.narvaez", "contrasena": "1234", "nombre": "Joel Narvaez Martinez" },
+{ "cuenta": "ana.rosales", "contrasena": "abcd", "nombre": "Ana Lorena Rosales" },
+{ "cuenta": "sofia.martinez", "contrasena": "password", "nombre": "Sofía Martínez" },
+{ "cuenta": "ricardo.gomez", "contrasena": "0000", "nombre": "Ricardo Gómez" },
+{ "cuenta": "valeria.santos", "contrasena": "12345", "nombre": "Valeria Santos" },
+{ "cuenta": "prof.carmen", "contrasena": "admin", "nombre": "Carmen Morales" },
+{ "cuenta": "alejandro.torres", "contrasena": "pass", "nombre": "Alejandro Torres" }
 ]
