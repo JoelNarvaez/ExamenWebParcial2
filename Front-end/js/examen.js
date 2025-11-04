@@ -114,7 +114,7 @@ quizForm.addEventListener("submit", async (e) => {
   if (data.aprobado) {
     alert(`¡Felicidades! Aprobaste con ${data.score}/${data.total}`);
 
-    // Guardar categoria aprobada SOLO aquí
+    
     localStorage.setItem("categoriaAprobada", categoria);
 
     resultado.innerHTML += `
@@ -135,7 +135,7 @@ quizForm.addEventListener("submit", async (e) => {
   } else {
     alert(`No aprobaste. Obtuviste ${data.score}/${data.total}`);
 
-    // Borrar categoría si falló
+
     localStorage.removeItem("categoria");
 
     resultado.innerHTML += `

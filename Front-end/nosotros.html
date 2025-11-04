@@ -1,106 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificacion</title>
+    <title>Nosotros - Certificación Tech</title>
     <script src="https://kit.fontawesome.com/0209f1a64b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/estilos-sobre-nosotros.css">
 </head>
 <body>
-    <header>
-        <nav class="menu">
-            <div class="menu-izquierda">
-                <a href="index.html" class="logo">LOGO</a>
-            </div>
-             <div class="menu-central">
-                <a href="index.html" class="inicio">Inicio</a>
-                <a href="certificaciones.html" class="certificaciones">Certificaciones</a>
-                <a href="contacto.html" class="contacto">Contacto</a>
-                <a href="nosotros.html" class="nosotros">Nosotros</a>
-            </div>
-            <div class="menu-izquierda">
-                <span id="userName" class="user-name"></span>
-                <button id="loginBtn" class="login-btn" title="Login">
-                    <span class="login-Menu">Iniciar Sesión</span>
-                </button>
-                <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
-                    <span class="logout-Menu">Cerrar Sesión</span>
-                </button>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Secciones de la página de inicio -->
-    <main>
-<section class="certificaciones-seccion"> 
-<!-- div.servicios-container -->
-    <h2 class="nostros-titulo">Nosotros</h2>
-    <div class="nosotros-contenedor">
-        <div class="nosotros-card">
-            <img src="cafe_literario.jpg" alt="Joel Narváez Martínez">
-            <h3>Joel Narváez Martínez</h3>
-            <p> En Librería Atlantis creemos que los libros no solo se leen, también se disfrutan, se comparten y se viven. Por eso, todos los jueves a las 6:00 P.M. te invitamos a nuestro Café Literario, un espacio creado para que lectores, escritores y curiosos se reúnan alrededor de una buena taza de café y una conversación enriquecedora. </p>
-            <br> <br>En cada encuentro podrás: <br>
-            <ul>
-                <li>Descubrir nuevas lecturas y autores. </li>
-                <li>Compartir tus impresiones sobre libros clásicos y contemporáneos. </li> 
-                <li>Escuchar lecturas en voz alta y reflexiones literarias. </li> 
-                <li>Conocer a personas apasionadas por la literatura, igual que tú. </li> 
-            </ul>
-            <br><p>¡Te esperamos!</p>
+<header>
+    <nav class="menu">
+        <div class="menu-izquierda">
+            <a href="index.html" class="logo">LOGO</a>
         </div>
-        <div class="nosotros-card">
-            <img src="imagenes/anaFoto.jpg" alt="Ana Rosales">
-            <h3>Ana Lorena Rosales Delgado</h3>
-            <p>Poner descripción de mí.</p>
+         <div class="menu-central">
+            <a href="index.html" class="inicio">Inicio</a>
+            <a href="certificaciones.html" class="certificaciones">Certificaciones</a>
+            <a href="contacto.html" class="contacto">Contacto</a>
+            <a href="nosotros.html" class="nosotros">Nosotros</a>
         </div>
+        <div class="menu-izquierda">
+            <span id="userName" class="user-name"></span>
+            <button id="loginBtn" class="login-btn" title="Login">
+                <span class="login-Menu">Iniciar Sesión</span>
+            </button>
+            <button id="logoutBtn" class="logout-btn" title="Logout" style="display: none;">
+                <span class="logout-Menu">Cerrar Sesión</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main>
+  <!-- HERO / PORTADA -->
+  <section class="hero-nosotros">
+    <div class="hero-content">
+      <span class="tag">Sobre nosotros</span>
+      <h1>Impulsamos el talento digital con certificaciones reconocidas</h1>
+      <p>
+        Somos una plataforma educativa que valida tus habilidades técnicas en programación con estándares internacionales,
+        conectando conocimiento, práctica y reconocimiento profesional.
+      </p>
+      <a href="certificaciones.html" class="btn-hero">Ver Certificaciones</a>
     </div>
-    </section>
+    <div class="hero-image">
+      <img src="imagenes/nostros.png" alt="Tecnología educación">
+    </div>
+  </section>
 
-    </main>
+  <!-- Misión y visión -->
+  <section class="grid-section">
+    <div class="info-card">
+      <img src="https://img.icons8.com/fluency/96/earth-planet.png" alt="Misión">
+      <h2>Misión</h2>
+      <p>Democratizar la certificación tecnológica en Latinoamérica para acelerar carreras y abrir oportunidades globales.</p>
+    </div>
+    <div class="info-card">
+      <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Visión">
+      <h2>Visión</h2>
+      <p>Convertirnos en la plataforma líder en certificación digital en tecnología para estudiantes y profesionales hispanohablantes.</p>
+    </div>
+    <div class="info-card">
+      <img src="https://img.icons8.com/fluency/96/handshake.png" alt="Valores">
+      <h2>Valores</h2>
+      <p>Excelencia, accesibilidad, innovación educativa, ética profesional y aprendizaje continuo.</p>
+    </div>
+  </section>
 
-      <!-- Modal de Login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="formLogin">
-                <input type="text" id="login" placeholder="Usuario" required>
-                <input type="password" id="password" placeholder="Contraseña" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
+  <!-- Por qué elegirnos -->
+  <section class="why-us">
+    <h2>¿Por qué elegirnos?</h2>
+    <p class="section-desc">
+      Nuestra experiencia en educación, tecnología e innovación nos respalda para certificar habilidades reales y actuales.
+    </p>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Plataforma 100% Online</h3>
+        <p>Estudia y certifícate desde cualquier lugar, sin horarios fijos.</p>
+      </div>
+      <div class="feature">
+        <h3>Certificación Internacional</h3>
+        <p>Certificados verificables en cualquier Pais</p>
+      </div>
+      <div class="feature">
+        <h3>Contenido Actualizado</h3>
+        <p>Basado en tecnologías reales usadas en la industria.</p>
+      </div>
+      <div class="feature">
+        <h3>Expertos Reales</h3>
+        <p>Docentes y desarrolladores senior guiando tu aprendizaje.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="testimonial">
+  <div class="testimonial-header">
+    <span class="section-tag">Testimonios</span>
+    <h2>Opiniones que cuentan</h2>
+    <p>Lo que dicen nuestros estudiantes y profesionales certificados</p>
   </div>
 
+  <div class="testimonials-wrapper">
+      <div class="testimonial-box">
+        <img src="imagenes/mariaFoto.png" alt="María Fernández">
+        <blockquote>
+          “Una de las mejores experiencias educativas que he tenido. La plataforma es moderna, intuitiva y los contenidos realmente te preparan para el mundo laboral.”
+        </blockquote>
+        <h4>María Fernández</h4>
+        <p class="role">Desarrolladora Frontend</p>
+      </div>
+
+      <div class="testimonial-box">
+        <img src="imagenes/carlosFoto.png" alt="Carlos Romero">
+        <blockquote>
+          “Me impresionó la calidad de los instructores y el enfoque práctico de cada curso. Aprendí mucho más de lo que esperaba.”
+        </blockquote>
+        <h4>Carlos Romero</h4>
+        <p class="role">Ingeniero de Software en Oracle</p>
+      </div>
+  </div>
+</section>
+
+
+  <!-- Equipo -->
+  <section class="team-section">
+    <h2>Nuestro Equipo</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="imagenes/anaFoto.png" alt="Dra. Ana Lorena Rosales">
+        <h4>Dra. Ana Lorena Rosales</h4>
+        <p>Directora Académica (CEO)</p>
+        <p class="bio">Más de 10 años de experiencia liderando programas de formación tecnológica y colaborando con universidades de América Latina. Apasionada por la innovación educativa.</p>
+      </div>
+      <div class="team-card">
+        <img src="imagenes/joelFoto.png" alt="Ing. Joel Narváez Martinez">
+        <h4>Ing. Joel Narváez Martinez</h4>
+        <p>FullStack Developer</p>
+        <p class="bio">Ingeniero de software senior con trayectoria en arquitectura de sistemas escalables, seguridad informática y desarrollo de plataformas educativas.</p>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Sección Inspiracional / Video -->
+<section class="connect-section">
+  <h2>Conecta de nuevas formas con nuestros productos</h2>
+  
+  <div class="btn-group">
+    <a href="certificaciones.html" class="btn-primary">Explora nuestras certificaciones</a>
+  </div>
+
+  <div class="video-container">
+   <video id="videoMotivacional" loop playsinline>
+  <source src="video/motivacional.mp4" type="video/mp4">
+</video>
+  </div>
+</section>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="formLogin">
+            <input type="text" id="login" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+
 <footer class="footer">
-        <div class="footer-contenedor">
-            <div class="footer-contenido">
-                <div class="footer-info">
-                <h3>Certificaciones</h3>
-                <p>Texto de ejemplo footer</p>
-                <p>Texto de ejemplo footer</p>
-                </div>
-                <div class="footer-redes">
-                    <h4>Síguenos en redes sociales</h4>
-                    <div class="redes-sociales">    
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="#" class="red-social">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
+    <div class="footer-contenedor">
+        <div class="footer-contenido">
+            <div class="footer-info">
+            <h3>Certificaciones</h3>
+            <p>Texto de ejemplo footer</p>
+            <p>Texto de ejemplo footer</p>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2025. Todos los derechos reservadosb.</p>
+            <div class="footer-redes">
+                <h4>Síguenos</h4>
+                <div class="redes-sociales">    
+                    <a href="#" class="red-social"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="red-social"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-copyright">
+            <p>&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    const video = document.getElementById("videoMotivacional");
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      video.play();     
+    } else {
+      video.pause();   
+    }
+  });
+}, { threshold: 0.5 }); 
 
-    <script src="js/app.js"></script>
+observer.observe(video);
+</script>
+<script src="js/app.js"></script>
 </body>
 </html>
